@@ -1,12 +1,12 @@
 
-%define		minmozver	5:1.5
+%define		minmozver	5:1.6
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.0.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.0/%{name}-%{version}.tar.bz2
@@ -96,7 +96,7 @@ cd ..
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.5
+	--with-mozilla-snapshot=1.6
 
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
