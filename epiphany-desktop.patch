@@ -9,7 +9,17 @@ diff -aurN epiphany-1.3.0.orig/data/bme.desktop.in epiphany-1.3.0/data/bme.deskt
 +Categories=Network;
 diff -aurN epiphany-1.3.0.orig/data/epiphany.desktop.in epiphany-1.3.0/data/epiphany.desktop.in
 --- epiphany-1.3.0.orig/data/epiphany.desktop.in	2003-07-02 19:56:40.000000000 +0200
-+++ epiphany-1.3.0/data/epiphany.desktop.in	2004-06-12 12:12:58.684919360 +0200
++++ epiphany-1.3.0/data/epiphany.desktop.in	2004-06-12 12:17:22.643791512 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-_Name=Web Browser
+-_Comment=Browse the web
++_Name=Epiphany
++_Comment=Web Browser
+ Exec=epiphany %U
+ StartupNotify=true
+ Terminal=false
 @@ -11,4 +11,4 @@
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=epiphany
