@@ -1,16 +1,16 @@
 
-%define		minmozver	5:1.7-0.a.1
+%define		minmozver	5:1.6
 %define		snap	20040305
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.1.11
+Version:	1.1.12
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	4811a0747829616fc6f8646c39d602e1
+# Source0-md5:	0d3686be369a797912fc2002fb8d047c
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 #Patch1:		%{name}-tabsmenu.patch
@@ -22,15 +22,15 @@ BuildRequires:	ORBit2-devel >= 1:2.9.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.5.6
+BuildRequires:	gnome-vfs2-devel >= 2.5.90
 BuildRequires:	gtk+2-devel >= 1:2.3.5
 BuildRequires:	intltool >= 0.29
-BuildRequires:	libbonoboui-devel >= 2.5.1
-BuildRequires:	libglade2-devel >= 1:2.3.1
-BuildRequires:	libgnomeui-devel >= 2.5.3
+BuildRequires:	libbonoboui-devel >= 2.5.3
+BuildRequires:	libglade2-devel >= 1:2.3.2
+BuildRequires:	libgnomeui-devel >= 2.5.90
 BuildRequires:	libxml2-devel >=  2.6.6
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.5.6
+BuildRequires:	nautilus-devel >= 2.5.90
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
@@ -38,7 +38,7 @@ Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 # epiphany uses new widgets not present in older version
 Requires:	gtk+2 >= 1:2.3.5
-Requires:	gnome-icon-theme >= 1.1.6-2
+Requires:	gnome-icon-theme >= 1.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
@@ -96,7 +96,7 @@ gnome-doc-common --copy
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.7a \
+	--with-mozilla-snapshot=1.6 \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
