@@ -26,7 +26,7 @@ BuildRequires:	gnome-vfs2-devel >= 2.5.1
 BuildRequires:	gtk+2-devel >= 1:2.3.1
 BuildRequires:	intltool
 BuildRequires:	libbonobo-devel >= 2.5.1
-BuildRequires:	libglade2-devel
+BuildRequires:	libglade2-devel >= 1:2.3.1
 BuildRequires:	libgnomeui-devel >= 2.5.0-1
 BuildRequires:	libxml2-devel >=  2.6.0
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
