@@ -127,14 +127,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 if [ $1 = 0 ]; then
-%gconf_schema_uninstall /etc/gconf/schemas/epiphany-lockdown.schemas
-%gconf_schema_uninstall /etc/gconf/schemas/epiphany.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/epiphany-lockdown.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/epiphany.schemas
 fi
 
 %postun
 if [ $1 = 0 ]; then
-/usr/bin/scrollkeeper-update -q
-/usr/bin/update-desktop-database
+	/usr/bin/scrollkeeper-update -q
+	/usr/bin/update-desktop-database
 fi
 
 %files -f %{name}-2.0.lang
