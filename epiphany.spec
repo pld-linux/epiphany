@@ -18,7 +18,7 @@ Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 Patch2:		%{name}-first-tab.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel >= 2.7.5-1
+BuildRequires:	ORBit2-devel >= 1:2.9.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.3.0
