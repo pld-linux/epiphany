@@ -1,11 +1,11 @@
 
-%define		minmozver	1.4
+%define		minmozver	1.5a
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.8.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
@@ -55,7 +55,6 @@ Epiphany header files for plugin development.
 %description devel -l pl
 Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 
-
 %prep
 %setup -q
 %patch0 -p1
@@ -80,7 +79,7 @@ cd ..
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.4
+	--with-mozilla-snapshot=1.5a
 
 # CFLAGS is a hack for gcc 3.3
 %{__make} CFLAGS="%{rpmcflags} -fno-strict-aliasing"
@@ -100,6 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %gconf_schema_install
 /usr/bin/scrollkeeper-update
+
+%postun -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
