@@ -23,7 +23,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.1
-BuildRequires:	gtk+2-devel >= 1:2.3.1
+BuildRequires:	gtk+2-devel >= 1:2.3.2
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.5.1
 BuildRequires:	libglade2-devel >= 1:2.3.1
