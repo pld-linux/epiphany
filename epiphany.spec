@@ -1,6 +1,6 @@
 
 %define		minmozver	5:1.5
-%define		snap            20031113
+%define		snap            20031114
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
