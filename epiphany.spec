@@ -33,7 +33,7 @@ BuildRequires:	scrollkeeper
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	mozilla-embedded = 4:%(rpm -q --qf '%{VERSION}' --whatprovides mozilla-embedded)
+Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
