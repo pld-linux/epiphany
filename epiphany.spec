@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.5.6
+Version:	1.5.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	bb7707a9edfd52d9e58c59c83840281c
+# Source0-md5:	18b32952053004a97a4b02536d0770c3
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -19,6 +19,7 @@ BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-desktop >= 2.9.91
 BuildRequires:	gnome-vfs2-devel >= 2.9.90
 BuildRequires:	gtk+2-devel >= 2:2.6.2
 BuildRequires:	gtk-doc >= 1.0
@@ -30,6 +31,7 @@ BuildRequires:	libxml2-devel >= 2.6.12
 BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.9.90
 BuildRequires:	pango-devel >= 1:1.8.0
+BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
@@ -94,7 +96,6 @@ gnome-doc-common --copy
 	--enable-nautilus-view=yes \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
-
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
 	CFLAGS="%{rpmcflags} -fno-strict-aliasing"
