@@ -1,0 +1,15 @@
+diff -Nuard epiphany-1.0.orig/data/ui/epiphany-ui.xml.in epiphany-1.0/data/ui/epiphany-ui.xml.in
+--- epiphany-1.0.orig/data/ui/epiphany-ui.xml.in	2003-06-18 14:17:16.000000000 +0200
++++ epiphany-1.0/data/ui/epiphany-ui.xml.in	2003-09-16 14:10:35.000000000 +0200
+@@ -70,7 +70,11 @@
+ 	<separator name="TabsSep1"/>
+ 	<menuitem name="TabsMoveLeftMenu" verb="TabsMoveLeft"/>
+ 	<menuitem name="TabsMoveRightMenu" verb="TabsMoveRight"/>
++	<placeholder name="TabsMenuAfterMovePlaceholder">
++	</placeholder>
+         <menuitem name="TabsDetachMenu" verb="TabsDetach"/>
++	<placeholder name="TabsMenuAfterDetachPlaceholder">
++	</placeholder>
+ 	<placeholder name="TabsOpen">
+ 	<separator name="TabsSep2"/>
+ 	</placeholder>
