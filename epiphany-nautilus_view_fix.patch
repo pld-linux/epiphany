@@ -1,0 +1,19 @@
+diff -aurN epiphany-1.2.7.orig/src/ephy-nautilus-view.c epiphany-1.2.7/src/ephy-nautilus-view.c
+--- epiphany-1.2.7.orig/src/ephy-nautilus-view.c	2004-03-22 10:21:30.000000000 +0100
++++ epiphany-1.2.7/src/ephy-nautilus-view.c	2004-08-01 19:09:26.024958168 +0200
+@@ -543,14 +543,7 @@
+ 		    EphyNautilusView *view, 
+ 		    const char* verbname)
+ {
+-	EphyDialog *dialog;
+-	EphyNautilusViewPrivate *p = view->priv;
+-	
+-	dialog = ephy_print_dialog_new (NULL, p->embed, FALSE);
+-
+-	ephy_dialog_set_modal (dialog, TRUE);
+-	ephy_dialog_run (dialog);
+-	g_object_unref (dialog);
++        ephy_embed_print (view->priv->embed);
+ }
+ 
+ static void
