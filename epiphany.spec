@@ -38,7 +38,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreqdep	libgtkembedmoz.so libgtksuperwin.so libxpcom.so
 
 %description
-Gnome browser based on Gecko (Mozilla rendering engine).
+GNOME browser based on Gecko (Mozilla rendering engine).
 
 %description -l pl
 Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
