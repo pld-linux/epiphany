@@ -36,7 +36,7 @@ Requires(post):	GConf2
 Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 # epiphany uses new widgets not present in older version
-Requires:	gtk+2 >= 1:2.3.5
+Requires:	gtk+2 >= 2:2.3.5
 Requires:	gnome-icon-theme >= 1.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,7 +55,7 @@ Summary:	Epiphany header files
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2.3.5
+Requires:	gtk+2-devel >= 2:2.3.5
 Requires:	libxml2-devel >= 2.6.6
 
 %description devel
@@ -94,7 +94,6 @@ gnome-doc-common --copy
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.6 \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
