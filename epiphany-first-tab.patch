@@ -1,0 +1,23 @@
+diff -Nuard epiphany-1.0.orig/src/ephy-notebook.c epiphany-1.0/src/ephy-notebook.c
+--- epiphany-1.0.orig/src/ephy-notebook.c	2003-08-06 11:47:55.000000000 +0200
++++ epiphany-1.0/src/ephy-notebook.c	2003-09-16 15:49:09.000000000 +0200
+@@ -696,8 +696,8 @@
+ static void
+ update_tabs_visibility (EphyNotebook *nb, gboolean before_inserting)
+ {
+-	gboolean show_tabs;
+-	guint num;
++	gboolean show_tabs = FALSE;
++	guint num = 0;
+ 
+ 	num = gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
+ 
+@@ -705,6 +705,8 @@
+ 
+ 	show_tabs = (eel_gconf_get_boolean (CONF_TABS_TABBED) || num > 1) &&
+ 		    nb->priv->show_tabs == TRUE;
++		    
++	if (num < 2) show_tabs = FALSE;
+ 
+ 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), show_tabs);
+ }
