@@ -1,42 +1,41 @@
-
 %define		minmozver	5:1.7
-
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.2.8
+Version:	1.4.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	19d80db940f722b890dd439038743f83
-Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
-Patch1:		%{name}-first-tab.patch
-Patch2:		%{name}-locale-names.patch
-Patch3:		%{name}-desktop-name-entry.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	f9453cded23dd5c432dc2efc4303f796
+Patch0:		%{name}-first-tab.patch
+Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-mozilla_includes.patch
+Patch3:		%{name}-mozilla.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel >= 1:2.10.0
+BuildRequires:	GConf2-devel >= 2.7.92
+BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.6.0
-BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	gnome-vfs2-devel >= 2.8.0
+BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc
-BuildRequires:	intltool >= 0.29
-BuildRequires:	libbonoboui-devel >= 2.6.0
-BuildRequires:	libglade2-devel >= 1:2.3.6
-BuildRequires:	libgnomeui-devel >= 2.6.0
-BuildRequires:	libxml2-devel >=  2.6.6
+BuildRequires:	intltool >= 0.31
+BuildRequires:	libbonoboui-devel >= 2.6.1
+BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnomeui-devel >= 2.7.92
+BuildRequires:	libxml2-devel >=  2.6.11
 BuildRequires:	mozilla-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.6.0
+BuildRequires:	nautilus-devel >= 2.8.0
+BuildRequires:	pango-devel >= 1:1.5.2
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
-Requires(post):	scrollkeeper
-Requires:	gnome-icon-theme >= 1.2.0
-Requires:	gtk+2 >= 2:2.4.0
+Requires(post,postun):	scrollkeeper
+Requires:	gnome-icon-theme >= 2.7.90
+Requires:	gtk+2 >= 2:2.4.4
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,8 +58,8 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.4.0
-Requires:	libxml2-devel >= 2.6.6
+Requires:	gtk+2-devel >= 2:2.4.4
+Requires:	libxml2-devel >= 2.6.11
 
 %description devel
 Epiphany header files for plugin development.
@@ -78,8 +77,6 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch2 -p1
 %patch3 -p1
 
-mv po/{no,nb}.po
-
 %build
 rm -f acconfig.h
 cp /usr/share/automake/mkinstalldirs .
@@ -96,7 +93,6 @@ gnome-doc-common --copy
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
 	--enable-gtk-doc \
-	--with-mozilla-snapshot=branch1.7 \
 	--with-html-dir=%{_gtkdocdir}
 
 # CFLAGS is a hack for gcc 3.3
@@ -111,6 +107,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+
 # epiphany-2.0.mo, but gnome/help/epiphany
 %find_lang %{name}-2.0 --with-gnome --all-name
 
@@ -118,10 +116,15 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions
 rm -rf $RPM_BUILD_ROOT
 
 %post
+umask 022
 %gconf_schema_install
 /usr/bin/scrollkeeper-update
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
 
-%postun -p /usr/bin/scrollkeeper-update
+%postun
+umask 022
+/usr/bin/scrollkeeper-update
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
 
 %files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
@@ -138,6 +141,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/epiphany-1.2
+%{_includedir}/epiphany-1.4
 %{_pkgconfigdir}/*.pc
 %{_gtkdocdir}/*
