@@ -1,12 +1,12 @@
-diff -urN epiphany-1.2.6.orig/configure.in epiphany-1.2.6/configure.in
---- epiphany-1.2.6.orig/configure.in	2004-06-14 13:27:26.324036760 +0200
-+++ epiphany-1.2.6/configure.in	2004-06-14 13:27:41.961659480 +0200
-@@ -226,7 +226,7 @@
+diff -aurN epiphany-1.2.7.orig/configure.in epiphany-1.2.7/configure.in
+--- epiphany-1.2.7.orig/configure.in	2004-07-31 17:39:10.000000000 +0200
++++ epiphany-1.2.7/configure.in	2004-08-01 15:20:26.175732744 +0200
+@@ -235,7 +235,7 @@
  dnl ******************************* 
  dnl Add the languages which your application supports here.
  
--ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gu hi hr hu is id it ja ko li lt nl mi mk mn ms nn no pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
-+ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gu hi hr hu is id it ja ko li lt nl mi mk mn ms nb nn pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
+-ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gu he hi hr hu is id it ja ko li lt nl mi mk mn ms nn no pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
++ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gu he hi hr hu is id it ja ko li lt nl mi mk mn ms nb nn pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
  GETTEXT_PACKAGE=epiphany
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
