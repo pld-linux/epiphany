@@ -27,8 +27,8 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.3.8
-BuildRequires:	scrollkeeper
 BuildRequires:	rpm-build >= 4.1-10
+BuildRequires:	scrollkeeper
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
