@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.4.5
+Version:	1.4.6
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	ac41b48506ba2791121648772a885084
+# Source0-md5:	82e44449cc615e729d5fb218719b1d58
 # Source0-size:	3355896
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
@@ -141,6 +141,7 @@ umask 022
 %{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/*
 %{_libdir}/%{name}
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
