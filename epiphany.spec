@@ -7,7 +7,7 @@ Version:	1.4.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.4/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.4/%{name}-%{version}.tar.bz2
 # Source0-md5:	47909f75c6c87581172656ceed8c14b0
 # Source0-size:	3355896
 Patch0:		%{name}-first-tab.patch
@@ -28,7 +28,7 @@ BuildRequires:	libbonoboui-devel >= 2.8.0
 BuildRequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libgnomeui-devel >= 2.8.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >=  2.6.11
+BuildRequires:	libxml2-devel >= 2.6.11
 BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.8.0
 BuildRequires:	pango-devel >= 1:1.5.2
