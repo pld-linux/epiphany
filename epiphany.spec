@@ -56,7 +56,7 @@ Summary:	Epiphany header files
 Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
-Requires:	%{name} = %{version}-%{release}
+# doesn't require base
 Requires:	gtk+2-devel >= 2:2.4.0
 Requires:	libxml2-devel >= 2.6.6
 
