@@ -4,12 +4,12 @@
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.0.1
+Version:	1.0.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	f0de6c8c58906bc72cb702f98a2bf791
+# Source0-md5:	38a7bb5c060f57de7deec2c36a090353
 #Source0:	http://downloads.uk1.mozdev.org/rsync/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 Patch1:		%{name}-tabsmenu.patch
