@@ -5,14 +5,14 @@
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	0.7.0
+Version:	0.7.1
 #Release:	1.%{snap}.1
-Release:	1.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	db0e1071f9cc1b7dac1854557c27a177
+# Source0-md5:	3e76c0a7885ed0b18fb0d27bb0d32508
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
@@ -63,7 +63,8 @@ intltoolize --copy --force
 
 # rebuild for new ORBit2
 cd idl
-orbit-idl-2 -I/usr/share/idl EphyAutomation.idl
+orbit-idl-2 -I/usr/share/idl -I/usr/share/idl/bonobo-2.0 \
+	-I/usr/share/idl/bonobo-activation-2.0 EphyAutomation.idl
 mv -f *.h *.c ../src
 cd ..
 
