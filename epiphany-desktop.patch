@@ -5,7 +5,7 @@ diff -aurN epiphany-1.3.0.orig/data/bme.desktop.in epiphany-1.3.0/data/bme.deskt
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=epiphany
  X-GNOME-Bugzilla-Component=General
--Categories=Application;Network;
+-Categories=Application;Network;GNOME;GTK;
 +Categories=GNOME;GTK;Network;
 diff -aurN epiphany-1.3.0.orig/data/epiphany.desktop.in epiphany-1.3.0/data/epiphany.desktop.in
 --- epiphany-1.3.0.orig/data/epiphany.desktop.in	2003-07-02 19:56:40.000000000 +0200
@@ -25,6 +25,6 @@ diff -aurN epiphany-1.3.0.orig/data/epiphany.desktop.in epiphany-1.3.0/data/epip
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=epiphany
  X-GNOME-Bugzilla-Component=General
--Categories=Application;Network;
+-Categories=Application;Network;GNOME;GTK;WebBrowser;
 +Categories=GNOME;GTK;Network;WebBrowser;
  MimeType=text/html;text/xml;application/xhtml+xml;
