@@ -13,9 +13,8 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.t
 # Source0-md5:	0d3686be369a797912fc2002fb8d047c
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
-#Patch1:		%{name}-tabsmenu.patch
-Patch2:		%{name}-first-tab.patch
-Patch3:		%{name}-locale-names.patch
+Patch1:		%{name}-first-tab.patch
+Patch2:		%{name}-locale-names.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 1:2.9.0
@@ -68,9 +67,8 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %prep
 %setup -q
 %patch0 -p1
-#%%patch1 -p1
+%patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 mv po/{no,nb}.po
 
