@@ -21,9 +21,10 @@ diff -aurN epiphany-1.3.0.orig/data/epiphany.desktop.in epiphany-1.3.0/data/epip
  Exec=epiphany %U
  StartupNotify=true
  Terminal=false
-@@ -11,4 +11,4 @@
+@@ -11,5 +11,5 @@
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=epiphany
  X-GNOME-Bugzilla-Component=General
 -Categories=Application;Network;
 +Categories=GNOME;GTK;Network;WebBrowser;
+ MimeType=text/html;text/xml;application/xhtml+xml;
