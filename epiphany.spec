@@ -14,7 +14,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.3/%{name}-%{version}.t
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 Patch1:		%{name}-first-tab.patch
 Patch2:		%{name}-locale-names.patch
-Patch3:		%{name}-desktop-name-entry.patch
+Patch3:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.7.1
 BuildRequires:	ORBit2-devel >= 1:2.10.0
