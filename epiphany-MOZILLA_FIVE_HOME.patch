@@ -1,12 +1,12 @@
-diff -aurN epiphany-1.0.7.orig/src/epiphany.in epiphany-1.0.7/src/epiphany.in
---- epiphany-1.0.7.orig/src/epiphany.in	2003-12-20 20:35:41.000000000 +0100
-+++ epiphany-1.0.7/src/epiphany.in	2004-01-17 14:18:32.396937936 +0100
+diff -urN aa/epiphany-1.1.2/src/epiphany.in epiphany-1.1.2/src/epiphany.in
+--- aa/epiphany-1.1.2/src/epiphany.in	2003-12-20 20:35:58.000000000 +0100
++++ epiphany-1.1.2/src/epiphany.in	2003-12-28 21:39:21.275646960 +0100
 @@ -2,7 +2,7 @@
  
  dist_bin=`dirname $0`
  
 -MOZILLA_HOME=@MOZILLA_HOME@
-+MOZILLA_HOME=/usr/lib/mozilla
++MOZILLA_HOME=@MOZILLA_HOME@/mozilla
  
  if [ -z "$MOZ_PLUGIN_PATH" ]; then
      MOZ_PLUGIN_PATH=/usr/lib/mozilla/plugins:/usr/libexec/plugins/mozilla
