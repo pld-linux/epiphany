@@ -1,0 +1,13 @@
+diff -Nuard epiphany-1.2.2.orig/data/epiphany.desktop.in epiphany-1.2.2/data/epiphany.desktop.in
+--- epiphany-1.2.2.orig/data/epiphany.desktop.in	2003-07-02 19:56:40.000000000 +0200
++++ epiphany-1.2.2/data/epiphany.desktop.in	2004-04-18 14:54:35.701080664 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-_Name=Web Browser
+-_Comment=Browse the web
++_Name=Epiphany
++_Comment=Web Browser
+ Exec=epiphany %U
+ StartupNotify=true
+ Terminal=false
