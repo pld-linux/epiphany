@@ -8,9 +8,9 @@ Version:	0.9.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-#Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
-Source0:	http://downloads.mozdev.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	beba1461cf06760e2b9e2533d42097a7
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	239ab7f789cba6b27314e081ab405e03
+#Source0:	http://downloads.mozdev.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
