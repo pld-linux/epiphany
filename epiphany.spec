@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.5.7
+Version:	1.5.8
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	18b32952053004a97a4b02536d0770c3
+# Source0-md5:	983d12b8f4a5b26f6cda5612ce120e3c
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -21,7 +21,7 @@ BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop >= 2.9.91
 BuildRequires:	gnome-vfs2-devel >= 2.9.90
-BuildRequires:	gtk+2-devel >= 2:2.6.2
+BuildRequires:	gtk+2-devel >= 2:2.6.3
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libglade2-devel >= 1:2.5.0
@@ -37,7 +37,7 @@ BuildRequires:	scrollkeeper
 Requires(post):	GConf2
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-icon-theme >= 2.9.90
-Requires:	gtk+2 >= 2:2.6.2
+Requires:	gtk+2 >= 2:2.6.3
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,7 +60,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.6.2
+Requires:	gtk+2-devel >= 2:2.6.3
 Requires:	libxml2-devel >= 2.6.11
 
 %description devel
