@@ -11,7 +11,7 @@ License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}.%{snap}.tar.bz2
-# Source0-md5:	3f0a5e85c9d5d936e6fc59ff3829dbfe
+# Source0-md5:	4383a1a26ae4e8982aee51f5da44e17b
 #Source0:	http://downloads.uk1.mozdev.org/rsync/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 #Patch1:		%{name}-tabsmenu.patch
