@@ -1,12 +1,12 @@
 
-%define		minmozver	1.3b-0.2
-%define		snap		20030221
+%define		minmozver	1.3
+%define		snap		20030315
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.5.0
-Release:	%{snap}.1
+Release:	1.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	%{name}-%{version}-%{snap}.tar.bz2
