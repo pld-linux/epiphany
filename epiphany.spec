@@ -26,6 +26,7 @@ BuildRequires:	intltool
 BuildRequires:	libbonoboui-devel >= 2.4.0
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.9
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.4.0
