@@ -5,12 +5,12 @@
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.1.5
-Release:	2
+Version:	1.1.6
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	36fbb238e68bdbfd426ab480135fc95e
+# Source0-md5:	a10f2cc3c7f717fc327cc34db79178d1
 #Source0:	%{name}-%{version}.%{snap}.tar.bz2
 #Source0:	http://downloads.uk1.mozdev.org/rsync/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
@@ -23,7 +23,7 @@ BuildRequires:	ORBit2-devel >= 1:2.9.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.5.1
+BuildRequires:	gnome-vfs2-devel >= 2.5.6
 BuildRequires:	gtk+2-devel >= 1:2.3.2
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.5.1
@@ -31,7 +31,7 @@ BuildRequires:	libglade2-devel >= 1:2.3.1
 BuildRequires:	libgnomeui-devel >= 2.5.3
 BuildRequires:	libxml2-devel >=  2.6.0
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.5.5
+BuildRequires:	nautilus-devel >= 2.5.6
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
