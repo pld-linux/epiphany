@@ -1,12 +1,12 @@
 
-%define		minmozver	5:1.5
+%define		minmozver	5:1.6
 %define		snap            20031203
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
@@ -21,16 +21,16 @@ BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 1:2.9.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.3.0
+BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.1
 BuildRequires:	gtk+2-devel >= 1:2.3.1
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.5.1
 BuildRequires:	libglade2-devel >= 1:2.3.1
-BuildRequires:	libgnomeui-devel >= 2.5.0-1
+BuildRequires:	libgnomeui-devel >= 2.5.3
 BuildRequires:	libxml2-devel >=  2.6.0
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.5.1.1
+BuildRequires:	nautilus-devel >= 2.5.5
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
@@ -88,7 +88,7 @@ intltoolize --copy --force
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.5 \
+	--with-mozilla-snapshot=1.6 \
 	--enable-gtk-doc \
 	--with-html-path=%{_gtkdocdir}
 
