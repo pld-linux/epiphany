@@ -13,6 +13,7 @@ Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
 Patch3:		%{name}-mozilla.patch
+Patch4:		%{name}-mozilla173.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	ORBit2-devel >= 1:2.11.2
@@ -76,6 +77,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 rm -f acconfig.h
