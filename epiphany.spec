@@ -1,26 +1,22 @@
 
 %define		minmozver	1.4
-%define		snap		20030518
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	0.7.3
-#Release:	1.%{snap}.1
-Release:	2
+Version:	0.8.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-#Source0:	%{name}-%{version}-%{snap}.tar.bz2
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	10c9481303255bd7a356964ed8392ab6
-Patch0:		%{name}-ac.patch
-Patch1:		%{name}-MOZILLA_FIVE_HOME.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	b75c4d7eae8c08eb7d817138e5867b73
+Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel >= 2.7.2
+BuildRequires:	ORBit2-devel >= 2.7.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 2.1.0
+BuildRequires:	libbonobo-devel >= 2.3.5
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	intltool
@@ -46,10 +42,22 @@ Gnome browser based on Gecko (Mozilla rendering engine).
 Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
 interpretacji stron Mozilli).
 
+%package devel
+Summary:	Epiphany header files
+Summary(pl):	Pliki nag³ówkowe Epiphany
+Group:		X11/Applications/Networking
+Requires:	%{name} = %{version}
+
+%description devel
+Epiphany header files for plugin development.
+
+%description devel -l pl
+Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
+
+
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f acconfig.h
@@ -103,3 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/*
+
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/epiphany-1.0
