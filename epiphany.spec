@@ -1,11 +1,12 @@
 
-%define		minmozver	1.4a
-%define		snap		20030315
+%define		minmozver	1.4b
+%define		snap		20030518
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	0.6.0
+Version:	0.6.1
+#Release:	1.%{snap}.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
@@ -62,9 +63,11 @@ intltoolize --copy --force
 
 %configure \
 	--disable-schemas-install \
-	--enable-nautilus-view=yes
+	--enable-nautilus-view=yes \
+	--with-mozilla-snapshot=1.4b
 
-%{__make}
+# CFLAGS is a hack for gcc 3.3" 
+%{__make} CFLAGS="%{rpmcflags} -fno-strict-aliasing"
 
 %install
 rm -rf $RPM_BUILD_ROOT
