@@ -10,7 +10,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
-Source0:	http://mpgritti.oltrelinux.com/%{name}-%{version}.tar.gz
+Source0:	http://downloads.mozdev.org/epiphany/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	autoconf
