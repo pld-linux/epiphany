@@ -2,6 +2,7 @@
 %define		minmozver	5:1.5
 
 Summary:	Epiphany - gecko-based GNOME web browser
+Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.0.6
@@ -14,7 +15,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.0/%{name}-%{version}.t
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 Patch1:		%{name}-tabsmenu.patch
 Patch2:		%{name}-first-tab.patch
-URL:		http://epiphany.mozdev.org/
+URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	autoconf
@@ -43,12 +44,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GNOME browser based on Gecko (Mozilla rendering engine).
 
+%description -l es
+Navigador Web de GNOME basado en Gecko (el engine plasmante de Mozilla).
+
 %description -l pl
 Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
 interpretacji stron Mozilli).
 
 %package devel
 Summary:	Epiphany header files
+Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}
@@ -57,6 +62,9 @@ Requires:	libxml2-devel >= 2.5.9
 
 %description devel
 Epiphany header files for plugin development.
+
+%description devel -l es
+Ficheros de cabecera de Epiphany para desarrollar plug-ins.
 
 %description devel -l pl
 Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
