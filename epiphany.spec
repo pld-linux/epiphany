@@ -12,6 +12,7 @@ License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	d8a710f86ec0a05348e8dd7dd11fc435
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
