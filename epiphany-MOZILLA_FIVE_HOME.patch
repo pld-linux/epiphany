@@ -1,14 +1,12 @@
-diff -urN epiphany-0.6.0.orig/src/epiphany.in epiphany-0.6.0/src/epiphany.in
---- epiphany-0.6.0.orig/src/epiphany.in	Sun May  4 12:52:51 2003
-+++ epiphany-0.6.0/src/epiphany.in	Sun May  4 12:53:36 2003
-@@ -4,8 +4,8 @@
+diff -aurN epiphany-1.0.7.orig/src/epiphany.in epiphany-1.0.7/src/epiphany.in
+--- epiphany-1.0.7.orig/src/epiphany.in	2003-12-20 20:35:41.000000000 +0100
++++ epiphany-1.0.7/src/epiphany.in	2004-01-17 14:18:32.396937936 +0100
+@@ -2,7 +2,7 @@
  
- if test -n "$MOZILLA_FIVE_HOME"; then
- 	MOZILLA_HOME=$MOZILLA_FIVE_HOME
--elif [ -f @MOZILLA_HOME@/chrome/comm.jar ]; then
--	MOZILLA_HOME=@MOZILLA_HOME@
-+elif [ -f /usr/share/mozilla/chrome/comm.jar ]; then
-+	MOZILLA_HOME=/usr/lib/mozilla
- else
- 	echo "Cannot find mozilla installation directory. Please set MOZILLA_FIVE_HOME to your mozilla directory"
- 	exit
+ dist_bin=`dirname $0`
+ 
+-MOZILLA_HOME=@MOZILLA_HOME@
++MOZILLA_HOME=/usr/lib/mozilla
+ 
+ if [ -z "$MOZ_PLUGIN_PATH" ]; then
+     MOZ_PLUGIN_PATH=/usr/lib/mozilla/plugins:/usr/libexec/plugins/mozilla
