@@ -96,6 +96,7 @@ gnome-doc-common --copy
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
 	--enable-gtk-doc \
+	--with-mozilla-snapshot=branch1.7 \
 	--with-html-dir=%{_gtkdocdir}
 
 # CFLAGS is a hack for gcc 3.3
