@@ -23,7 +23,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.1
-BuildRequires:	gtk+2-devel >= 2.3.0-1.20031110.1
+BuildRequires:	gtk+2-devel >= 1:2.3.0-1.20031110.1
 BuildRequires:	intltool
 BuildRequires:	libbonobo-devel >= 2.3.5
 BuildRequires:	libglade2-devel
@@ -37,7 +37,7 @@ Requires(post):	GConf2
 Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 # epiphany uses new widgets not present in older version
-Requires:	gtk+2 >= 2.3.0-1.20031110.1
+Requires:	gtk+2 >= 1:2.3.0-1.20031110.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
