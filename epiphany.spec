@@ -57,7 +57,7 @@ interpretacji stron Mozilli).
 Summary:	Epiphany header files
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
-Requires:	%{name} = %{version}-%{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2.3.2
 Requires:	libxml2-devel >= 2.6.6
 
