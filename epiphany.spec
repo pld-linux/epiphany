@@ -5,7 +5,7 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.8.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
@@ -88,6 +88,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -115,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/*
+%{_libdir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
