@@ -11,6 +11,7 @@ Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	b75c4d7eae8c08eb7d817138e5867b73
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
+Patch1:		%{name}-ac.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.7.3
@@ -58,6 +59,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f acconfig.h
