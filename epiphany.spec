@@ -12,6 +12,7 @@ Group:		X11/Applications/Networking
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-ac.patch
+Patch1:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -47,6 +48,7 @@ interpretacji stron Mozilli).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f acconfig.h
@@ -85,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
-%{_datadir}/applications/*
+%{_desktopdir}/*
 %{_datadir}/application-registry/*
 %{_datadir}/gnome/help/*
 %{_pixmapsdir}/*
