@@ -32,6 +32,7 @@ BuildRequires:	libgnomeui-devel >= 2.7.2
 BuildRequires:	libxml2-devel >=  2.6.11
 BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.7.2
+BuildRequires:	pango-devel >= 1:1.5.2
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
