@@ -9,7 +9,6 @@ License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.4/%{name}-%{version}.tar.bz2
 # Source0-md5:	47909f75c6c87581172656ceed8c14b0
-# Source0-size:	3355896
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -105,7 +104,7 @@ gnome-doc-common --copy
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}-1.4/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -138,11 +137,11 @@ umask 022
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_datadir}/application-registry/*
-%{_mandir}/man1/%{name}*
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/*
-%{_libdir}/%{name}
+%dir %{_libdir}/%{name}-1.4
+%dir %{_libdir}/%{name}-1.4/extensions
 %{_mandir}/man1/*
 
 %files devel
