@@ -1,16 +1,16 @@
 
-%define		minmozver	1.3
+%define		minmozver	1.4a
 %define		snap		20030315
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.5.0
-Release:	1.%{snap}.1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	%{name}-%{version}-%{snap}.tar.bz2
-#Source0:	http://mpgritti.oltrelinux.com/%{name}-%{version}.tar.bz2
+#Source0:	%{name}-%{version}-%{snap}.tar.bz2
+Source0:	http://mpgritti.oltrelinux.com/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	autoconf
@@ -45,7 +45,7 @@ Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
 interpretacji stron Mozilli).
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
@@ -77,6 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install
+/usr/bin/scrollkeeper-update
 
 %files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
@@ -85,5 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/applications/*
+%{_datadir}/gnome/help/*
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
+%{_omf_dest_dir}/*
