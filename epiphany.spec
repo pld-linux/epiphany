@@ -17,6 +17,7 @@ Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-desktop.patch
 Patch3:		%{name}-mozilla_includes.patch
+Patch4:		%{name}-mozilla.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.7.91
 BuildRequires:	ORBit2-devel >= 1:2.11.2
@@ -79,6 +80,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 mv po/{no,nb}.po
 
