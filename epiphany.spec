@@ -18,7 +18,7 @@ BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.4.0
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.8.0
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc
@@ -84,7 +84,7 @@ glib-gettextize --copy --force
 intltoolize --copy --force
 gnome-doc-common --copy
 %{__libtoolize}
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
