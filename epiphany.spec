@@ -1,18 +1,17 @@
 
-%define		minmozver	5:1.6
-%define		snap            20031203
+%define		minmozver	5:1.7-0.a.1
+%define		snap	20040305
 
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.1.10
-Release:	1
+Release:	1.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	96144444ef5911f40f361a79e2fa05be
-#Source0:	%{name}-%{version}.%{snap}.tar.bz2
-#Source0:	http://downloads.uk1.mozdev.org/rsync/%{name}/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}-%{snap}.tar.bz2
+# Source0-md5:	b644dae5528a436dce35d39a5a3b6858
+#Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 #Patch1:		%{name}-tabsmenu.patch
 Patch2:		%{name}-first-tab.patch
@@ -24,7 +23,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.6
-BuildRequires:	gtk+2-devel >= 1:2.3.2
+BuildRequires:	gtk+2-devel >= 1:2.3.5
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonoboui-devel >= 2.5.1
 BuildRequires:	libglade2-devel >= 1:2.3.1
@@ -38,7 +37,7 @@ Requires(post):	GConf2
 Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 # epiphany uses new widgets not present in older version
-Requires:	gtk+2 >= 1:2.3.2
+Requires:	gtk+2 >= 1:2.3.5
 Requires:	gnome-icon-theme >= 1.1.6-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,7 +56,7 @@ Summary:	Epiphany header files
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2.3.2
+Requires:	gtk+2-devel >= 2.3.5
 Requires:	libxml2-devel >= 2.6.6
 
 %description devel
@@ -77,8 +76,10 @@ mv po/{no,nb}.po
 
 %build
 rm -f acconfig.h
+cp /usr/share/automake/mkinstalldirs .
 glib-gettextize --copy --force
 intltoolize --copy --force
+gnome-doc-common --copy
 %{__libtoolize}
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoheader}
@@ -95,7 +96,7 @@ intltoolize --copy --force
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.6 \
+	--with-mozilla-snapshot=1.7a \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
