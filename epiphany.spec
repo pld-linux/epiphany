@@ -1,5 +1,5 @@
 
-%define		minmozver	1.4b
+%define		minmozver	1.4
 %define		snap		20030518
 
 Summary:	Epiphany - gecko-based GNOME web browser
@@ -7,7 +7,7 @@ Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.7.3
 #Release:	1.%{snap}.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
@@ -33,7 +33,7 @@ BuildRequires:	scrollkeeper
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	mozilla-embedded = %(rpm -q --qf '%{VERSION}' --whatprovides mozilla-embedded)
+Requires:	mozilla-embedded = 4:%(rpm -q --qf '%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
@@ -71,7 +71,7 @@ cd ..
 %configure \
 	--disable-schemas-install \
 	--enable-nautilus-view=yes \
-	--with-mozilla-snapshot=1.4b
+	--with-mozilla-snapshot=1.4
 
 # CFLAGS is a hack for gcc 3.3
 %{__make} CFLAGS="%{rpmcflags} -fno-strict-aliasing"
