@@ -5,36 +5,36 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.2.5
+Version:	1.3.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	5e2be09bc1c54d2e7c1ae59a0016b16d
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	6d4f1e2015b63fea498c4a7c2a3b1ac6
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 Patch1:		%{name}-first-tab.patch
 Patch2:		%{name}-locale-names.patch
 Patch3:		%{name}-desktop-name-entry.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel
+BuildRequires:	GConf2-devel >= 2.7.1
 BuildRequires:	ORBit2-devel >= 1:2.10.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.6.0
+BuildRequires:	gnome-vfs2-devel >= 2.7.1
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonoboui-devel >= 2.6.0
 BuildRequires:	libglade2-devel >= 1:2.3.6
-BuildRequires:	libgnomeui-devel >= 2.6.0
+BuildRequires:	libgnomeui-devel >= 2.7.1
 BuildRequires:	libxml2-devel >=  2.6.6
 BuildRequires:	mozilla-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.6.0
+BuildRequires:	nautilus-devel >= 2.7.1
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	gnome-icon-theme >= 1.2.0
+Requires:	gnome-icon-theme >= 1.3.2
 Requires:	gtk+2 >= 2:2.4.0
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -136,6 +136,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/epiphany-1.2
+%{_includedir}/epiphany-1.3
 %{_pkgconfigdir}/*.pc
 %{_gtkdocdir}/*
