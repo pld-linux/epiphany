@@ -5,18 +5,19 @@
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.1.7
-Release:	2
+Version:	1.1.8
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	42cca068c54c931537ec4f6a6ccfcd8b
+# Source0-md5:	62ab4bfed909eaf87c436b5b202defac
 #Source0:	%{name}-%{version}.%{snap}.tar.bz2
 #Source0:	http://downloads.uk1.mozdev.org/rsync/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 #Patch1:		%{name}-tabsmenu.patch
 Patch2:		%{name}-first-tab.patch
 Patch3:		%{name}-schemas.patch
+Patch4:		%{name}-locale-names.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 1:2.9.0
@@ -26,10 +27,10 @@ BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.6
 BuildRequires:	gtk+2-devel >= 1:2.3.2
 BuildRequires:	intltool >= 0.29
-BuildRequires:	libbonobo-devel >= 2.5.1
+BuildRequires:	libbonoboui-devel >= 2.5.1
 BuildRequires:	libglade2-devel >= 1:2.3.1
 BuildRequires:	libgnomeui-devel >= 2.5.3
-BuildRequires:	libxml2-devel >=  2.6.0
+BuildRequires:	libxml2-devel >=  2.6.6
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.5.6
 BuildRequires:	rpm-build >= 4.1-10
@@ -38,7 +39,7 @@ Requires(post):	GConf2
 Requires(post):	scrollkeeper
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 # epiphany uses new widgets not present in older version
-Requires:	gtk+2 >= 1:2.3.1
+Requires:	gtk+2 >= 1:2.3.2
 Requires:	gnome-icon-theme >= 1.1.6-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,7 +57,9 @@ interpretacji stron Mozilli).
 Summary:	Epiphany header files
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{version}
+Requires:	gtk+2-devel >= 2.3.2
+Requires:	libxml2-devel >= 2.6.6
 
 %description devel
 Epiphany header files for plugin development.
@@ -70,6 +73,9 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 #%%patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+
+mv po/{no,nb}.po
 
 %build
 rm -f acconfig.h
@@ -93,7 +99,7 @@ intltoolize --copy --force
 	--enable-nautilus-view=yes \
 	--with-mozilla-snapshot=1.6 \
 	--enable-gtk-doc \
-	--with-html-path=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir}
 
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
