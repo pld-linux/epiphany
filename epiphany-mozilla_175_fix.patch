@@ -1,0 +1,136 @@
+diff -ur epiphany-1.4.7.orig/embed/mozilla/GlobalHistory.cpp epiphany-1.4.7/embed/mozilla/GlobalHistory.cpp
+--- epiphany-1.4.7.orig/embed/mozilla/GlobalHistory.cpp	2004-11-13 20:56:49.000000000 +0100
++++ epiphany-1.4.7/embed/mozilla/GlobalHistory.cpp	2005-01-13 22:11:24.000000000 +0100
+@@ -16,7 +16,7 @@
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  *
+- *  $Id$
++ *  $Id$
+  */
+ 
+ #include "mozilla-config.h"
+@@ -34,7 +34,7 @@
+ #include <nsEmbedString.h>
+ #undef MOZILLA_STRICT_API
+ 
+-NS_IMPL_ISUPPORTS2(MozGlobalHistory, nsIGlobalHistory2, nsIBrowserHistory)
++NS_IMPL_ISUPPORTS1 (MozGlobalHistory, nsIGlobalHistory2)
+ 
+ MozGlobalHistory::MozGlobalHistory ()
+ {
+@@ -131,77 +131,3 @@
+ 	
+ 	return NS_OK;
+ }
+-
+-/* void hidePage (in nsIURI url); */
+-NS_IMETHODIMP MozGlobalHistory::HidePage(nsIURI *aURI)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-#ifdef MOZ_NSIGLOBALHISTORY_NSIURIP
+-/* void removePage (in nsIURI aURI); */
+-NS_IMETHODIMP MozGlobalHistory::RemovePage(nsIURI *aURI)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-/* void removePagesFromHost (in AUTF8String aHost, in boolean aEntireDomain); */
+-NS_IMETHODIMP MozGlobalHistory::RemovePagesFromHost(const nsACString &aHost, 
+-						    PRBool aEntireDomain)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-#else
+-/* void removePage (in string aURL); */
+-NS_IMETHODIMP MozGlobalHistory::RemovePage(const char *aURL)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-/* void removePagesFromHost (in string aHost, in boolean aEntireDomain); */
+-NS_IMETHODIMP MozGlobalHistory::RemovePagesFromHost(const char *aHost, 
+-						    PRBool aEntireDomain)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-#endif
+-
+-/* void removeAllPages (); */
+-NS_IMETHODIMP MozGlobalHistory::RemoveAllPages()
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-/* readonly attribute AUTF8String lastPageVisited; */
+-NS_IMETHODIMP MozGlobalHistory::GetLastPageVisited(nsACString & aLastPageVisited)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-/* readonly attribute PRUint32 count; */
+-NS_IMETHODIMP MozGlobalHistory::GetCount(PRUint32 *aCount)
+-{
+-    return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-
+-#ifdef MOZ_NSIGLOBALHISTORY_NSIURIP
+-/* void markPageAsTyped (in AUTF8String aURI) */
+-NS_IMETHODIMP MozGlobalHistory::MarkPageAsTyped(nsIURI *aURI)
+-{
+-    return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-#else
+-/* void markPageAsTyped (in string url); */
+-NS_IMETHODIMP MozGlobalHistory::MarkPageAsTyped(const char *url)
+-{
+-    return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-#endif
+-
+-#ifdef MOZ_NSIBROWSERHISTORY_ADDPAGEWITHDETAILS
+-/* void addPageWithDetails (in nsIURI aURI, in wstring aTitle, in long long aLastVisited); */
+-NS_IMETHODIMP MozGlobalHistory::AddPageWithDetails(nsIURI *aURI, const PRUnichar *aTitle, PRInt64 aLastVisited)
+-{
+-	return NS_ERROR_NOT_IMPLEMENTED;
+-}
+-#endif
+diff -ur epiphany-1.4.7.orig/embed/mozilla/GlobalHistory.h epiphany-1.4.7/embed/mozilla/GlobalHistory.h
+--- epiphany-1.4.7.orig/embed/mozilla/GlobalHistory.h	2004-08-10 10:50:09.000000000 +0200
++++ epiphany-1.4.7/embed/mozilla/GlobalHistory.h	2005-01-13 22:11:26.000000000 +0100
+@@ -16,7 +16,7 @@
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  *
+- *  $Id$
++ *  $Id$
+  */
+ 
+ #ifndef EPHY_GLOBAL_HISTORY_H
+@@ -24,7 +24,6 @@
+ 
+ #include "ephy-history.h"
+ 
+-#include <nsIBrowserHistory.h>
+ #include <nsIGlobalHistory2.h>
+ 
+ #define EPHY_GLOBALHISTORY_CLASSNAME	"Epiphany Global History Implementation"
+@@ -36,7 +35,7 @@
+ 	{ 0xb7, 0x9e, 0xf7, 0xaa, 0x49, 0xeb, 0x6a, 0x15}	\
+ }
+ 
+-class MozGlobalHistory: public nsIBrowserHistory
++class MozGlobalHistory: public nsIGlobalHistory2
+ {
+ 	public:
+ 		MozGlobalHistory ();
+@@ -44,7 +43,6 @@
+ 
+ 		NS_DECL_ISUPPORTS
+ 		NS_DECL_NSIGLOBALHISTORY2
+-		NS_DECL_NSIBROWSERHISTORY
+ 
+ 	private:
+ 		EphyHistory *mGlobalHistory;
