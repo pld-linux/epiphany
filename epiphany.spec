@@ -4,23 +4,24 @@
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	0.8.0
-Release:	3
+Version:	0.8.2
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	b75c4d7eae8c08eb7d817138e5867b73
+#Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.mozdev.org/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	1da60a6e3fcbfe69969038eaef634d95
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libbonobo-devel >= 2.3.5
 BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	intltool
+BuildRequires:	libbonobo-devel >= 2.3.5
 BuildRequires:	libglade2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
@@ -82,7 +83,8 @@ cd ..
 	--with-mozilla-snapshot=1.5a
 
 # CFLAGS is a hack for gcc 3.3
-%{__make} CFLAGS="%{rpmcflags} -fno-strict-aliasing"
+%{__make} \
+	CFLAGS="%{rpmcflags} -fno-strict-aliasing"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -117,3 +119,4 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/epiphany-1.0
+%{_pkgconfigdir}/*.pc
