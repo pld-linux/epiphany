@@ -7,7 +7,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.3.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
@@ -18,26 +18,26 @@ Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-desktop.patch
 Patch3:		%{name}-mozilla_includes.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel >= 2.7.3
-BuildRequires:	ORBit2-devel >= 1:2.11.1
+BuildRequires:	GConf2-devel >= 2.7.91
+BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.7.90
+BuildRequires:	gnome-vfs2-devel >= 2.7.91
 BuildRequires:	gtk+2-devel >= 2:2.4.4
-BuildRequires:	intltool >= 0.29
+BuildRequires:	intltool >= 0.31
 BuildRequires:	libbonoboui-devel >= 2.6.1
 BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.7.2
+BuildRequires:	libgnomeui-devel >= 2.7.91
 BuildRequires:	libxml2-devel >=  2.6.11
 BuildRequires:	mozilla-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.7.2
+BuildRequires:	nautilus-devel >= 2.7.4
 BuildRequires:	pango-devel >= 1:1.5.2
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	gnome-icon-theme >= 1.3.5
+Requires:	gnome-icon-theme >= 1.3.7
 Requires:	gtk+2 >= 2:2.4.4
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
