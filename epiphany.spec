@@ -5,7 +5,7 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	0.8.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
@@ -13,7 +13,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.t
 Patch0:		%{name}-MOZILLA_FIVE_HOME.patch
 URL:		http://epiphany.mozdev.org/
 BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel >= 2.7.3
+BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libbonobo-devel >= 2.3.5
@@ -22,10 +22,10 @@ BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel
+BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	mozilla-embedded-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.0.0
+BuildRequires:	nautilus-devel >= 2.3.7-3
 BuildRequires:	scrollkeeper
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2
