@@ -27,13 +27,13 @@ BuildRequires:	intltool >= 0.33
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.6.19
+BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	nautilus-devel >= 2.10.0-3
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
@@ -63,7 +63,7 @@ Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+2-devel >= 2:2.6.4
-Requires:	libxml2-devel >= 2.6.19
+Requires:	libxml2-devel >= 1:2.6.19
 
 %description devel
 Epiphany header files for plugin development.
@@ -84,9 +84,9 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %build
 rm -f acconfig.h
 cp /usr/share/automake/mkinstalldirs .
-glib-gettextize --copy --force
-intltoolize --copy --force
-gnome-doc-common --copy
+%{__glib_gettextize}
+%{__intltoolize}
+%{__gnome-doc-common}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
@@ -120,24 +120,18 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/application-registry/*
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-%gconf_schema_install /etc/gconf/schemas/epiphany-lockdown.schemas
-%gconf_schema_install /etc/gconf/schemas/epiphany.schemas
-/usr/bin/scrollkeeper-update -q
-/usr/bin/update-desktop-database
+%gconf_schema_install epiphany-lockdown.schemas
+%gconf_schema_install epiphany.schemas
+%scrollkeeper_update_post
+%update_desktop_database_post
 
 %preun
-if [ $1 = 0 ]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/epiphany-lockdown.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/epiphany.schemas
-fi
+%gconf_schema_uninstall epiphany-lockdown.schemas
+%gconf_schema_uninstall epiphany.schemas
 
 %postun
-if [ $1 = 0 ]; then
-	umask 022
-	/usr/bin/scrollkeeper-update -q
-	/usr/bin/update-desktop-database
-fi
+%scrollkeeper_update_postun
+%update_desktop_database_postun
 
 %files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
