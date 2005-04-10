@@ -4,7 +4,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.6.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.6/%{name}-%{version}.tar.bz2
@@ -29,10 +29,8 @@ BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	mozilla-devel >= %{minmozver}
-BuildRequires:	nautilus-devel >= 2.10.0-3
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
-BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
@@ -83,10 +81,9 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 
 %build
 rm -f acconfig.h
-cp /usr/share/automake/mkinstalldirs .
 %{__glib_gettextize}
 %{__intltoolize}
-%{__gnome-doc-common}
+%{__gnome_doc_common}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
