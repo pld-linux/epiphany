@@ -1,14 +1,13 @@
-%define		minmozver	5:1.7
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.6.1
-Release:	2
+Version:	1.6.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	945545f33714736154725ed2a3b8c8b8
+# Source0-md5:	3161495ac4af4a7435918a98896b05e9
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -28,7 +27,7 @@ BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
-BuildRequires:	mozilla-devel >= %{minmozver}
+BuildRequires:	mozilla-devel >= 5:1.7
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
