@@ -1,3 +1,6 @@
+# Conditinal build:
+%bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
+#
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
@@ -27,7 +30,11 @@ BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
+%if %{with mozilla_firefox}
+BuildRequires:	mozilla-firefox-devel
+%else
 BuildRequires:	mozilla-devel >= 5:1.7
+%endif
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
