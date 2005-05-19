@@ -45,7 +45,7 @@ Requires(post,postun):	scrollkeeper
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	gtk+2 >= 2:2.6.4
 %if %{with mozilla_firefox}
-Requires:	mozilla-firefox = %(rpm -q --qf '%{EPOCH}:%{VERSION}' mozilla-firefox)
+%requires_eq	mozilla-firefox
 %else
 Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
 %endif
