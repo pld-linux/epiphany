@@ -5,12 +5,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.6.4
-Release:	3
+Version:	1.7.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	fbe9925593968c2f78abfa1e3a08e6d4
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	241844be26a49a2c4e014b0ef983cf70
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -26,8 +26,10 @@ BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.33
+BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
+BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 %if %{with mozilla_firefox}
@@ -37,6 +39,9 @@ BuildRequires:	mozilla-devel >= 5:1.7
 %endif
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
+# Requries but python package not present?
+#BuildRequires:	python-gnome-devel >= 2.6.0
+#BuildRequires:	python-pygtk-devel >= 2.6.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
@@ -90,19 +95,17 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch3 -p1
 
 %build
-rm -f acconfig.h
 %{__glib_gettextize}
 %{__intltoolize}
 %{__gnome_doc_common}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoheader}
 %{__automake}
 %{__autoconf}
 
 %configure \
 	--disable-schemas-install \
-	--enable-nautilus-view=yes \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 # CFLAGS is a hack for gcc 3.3
@@ -156,6 +159,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/epiphany-1.6
+%{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
 %{_gtkdocdir}/*
