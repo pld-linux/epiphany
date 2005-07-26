@@ -6,7 +6,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	1.7.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.7/%{name}-%{version}.tar.bz2
@@ -114,7 +114,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}-1.6/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.7/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -153,8 +153,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/*
-%dir %{_libdir}/%{name}-1.6
-%dir %{_libdir}/%{name}-1.6/extensions
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/1.7
+%dir %{_libdir}/%{name}/1.7/extensions
 %{_mandir}/man1/*
 
 %files devel
