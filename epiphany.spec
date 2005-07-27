@@ -5,12 +5,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.7.2
-Release:	3
+Version:	1.7.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	241844be26a49a2c4e014b0ef983cf70
+# Source0-md5:	555cce01c7727a6492efb745134dc568
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -19,15 +19,17 @@ URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake
+BuildRequires:	automake >= 1.8
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop-devel >= 2.10.0-2
+BuildRequires:	gnome-doc-utils >= 0.3.1-2
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk+2-devel >= 2:2.7.1
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.33
 BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeprintui-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	python-gnome-devel >= 2.11.3
 BuildRequires:	startup-notification-devel >= 0.5
@@ -49,7 +51,7 @@ Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-icon-theme >= 2.10.0
-Requires:	gtk+2 >= 2:2.6.4
+Requires:	gtk+2 >= 2:2.7.1
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
@@ -76,7 +78,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.6.4
+Requires:	gtk+2-devel >= 2:2.7.1
 Requires:	libxml2-devel >= 1:2.6.19
 
 %description devel
@@ -96,9 +98,10 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch3 -p1
 
 %build
+gnome-doc-prepare --copy --force
+%{__gnome_doc_common}
 %{__glib_gettextize}
 %{__intltoolize}
-%{__gnome_doc_common}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoheader}
