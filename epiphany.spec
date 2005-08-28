@@ -5,12 +5,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.7.5
+Version:	1.7.6
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	d27b716603b9c36be91430c366077423
+# Source0-md5:	f03624c24f021b058136b46fbf54bc31
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -21,6 +21,7 @@ BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
+BuildRequires:	dbus-glib-devel >= 0.34
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop-devel >= 2.10.0-2
 BuildRequires:	gnome-doc-utils >= 0.3.2-1
@@ -44,8 +45,8 @@ BuildRequires:	mozilla-devel >= 5:1.7
 BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
 # Requries but python package not present?
-#BuildRequires:	python-gnome-devel >= 2.6.0
-#BuildRequires:	python-pygtk-devel >= 2.6.0
+BuildRequires:	python-gnome-devel >= 2.6.0
+BuildRequires:	python-pygtk-devel >= 2.6.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
@@ -112,7 +113,9 @@ gnome-doc-prepare --copy --force
 
 %configure \
 	--disable-schemas-install \
+	--enable-dbus \
 	--enable-gtk-doc \
+	--enable-python \
 	--with-html-dir=%{_gtkdocdir}
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
