@@ -5,12 +5,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.7.6
+Version:	1.8.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	f03624c24f021b058136b46fbf54bc31
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	297ca64ce700e90db596a50d58b68a80
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -26,14 +26,13 @@ BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop-devel >= 2.10.0-2
 BuildRequires:	gnome-doc-utils >= 0.3.2-1
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.8.0
+BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.33
 BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeprintui-devel >= 2.11.0-3
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
-BuildRequires:	python-gnome-devel >= 2.11.3
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
@@ -42,7 +41,6 @@ BuildRequires:	mozilla-firefox-devel
 %else
 BuildRequires:	mozilla-devel >= 5:1.7
 %endif
-BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
 # Requries but python package not present?
 BuildRequires:	python-gnome-devel >= 2.6.0
@@ -53,7 +51,7 @@ Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-icon-theme >= 2.10.0
-Requires:	gtk+2 >= 2:2.7.1
+Requires:	gtk+2 >= 2:2.8.3
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
@@ -80,7 +78,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.7.1
+Requires:	gtk+2-devel >= 2:2.8.3
 Requires:	libxml2-devel >= 1:2.6.19
 
 %description devel
@@ -123,7 +121,7 @@ gnome-doc-prepare --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.7/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.8/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -164,8 +162,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/1.7
-%dir %{_libdir}/%{name}/1.7/extensions
+%dir %{_libdir}/%{name}/1.8
+%dir %{_libdir}/%{name}/1.8/extensions
 %{_mandir}/man1/*
 
 %files devel
