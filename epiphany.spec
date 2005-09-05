@@ -35,7 +35,7 @@ BuildRequires:	libgnomeprintui-devel >= 2.11.0-3
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	libxslt-devel >= 1.1.15
 %if %{with mozilla_firefox}
 BuildRequires:	mozilla-firefox-devel
 %else
@@ -79,7 +79,7 @@ Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+2-devel >= 2:2.8.3
-Requires:	libxml2-devel >= 1:2.6.19
+Requires:	libxslt-devel >= 1.1.15
 
 %description devel
 Epiphany header files for plugin development.
