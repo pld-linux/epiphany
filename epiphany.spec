@@ -5,45 +5,53 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.6.4
-Release:	5
+Version:	1.8.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	fbe9925593968c2f78abfa1e3a08e6d4
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	297ca64ce700e90db596a50d58b68a80
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
 Patch3:		%{name}-mozilla.patch
+Patch4:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake
+BuildRequires:	automake >= 1.8
+BuildRequires:	dbus-glib-devel >= 0.34
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop-devel >= 2.10.0-2
+BuildRequires:	gnome-doc-utils >= 0.3.2-1
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.33
+BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeprintui-devel >= 2.11.0-3
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
+BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	libxslt-devel >= 1.1.15
 %if %{with mozilla_firefox}
 BuildRequires:	mozilla-firefox-devel
 %else
 BuildRequires:	mozilla-devel >= 5:1.7
 %endif
-BuildRequires:	pango-devel >= 1:1.8.1
 BuildRequires:	pkgconfig
+# Requries but python package not present?
+BuildRequires:	python-gnome-devel >= 2.6.0
+BuildRequires:	python-pygtk-devel >= 2.6.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-icon-theme >= 2.10.0
-Requires:	gtk+2 >= 2:2.6.4
+Requires:	gtk+2 >= 2:2.8.3
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
@@ -70,8 +78,8 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.6.4
-Requires:	libxml2-devel >= 1:2.6.19
+Requires:	gtk+2-devel >= 2:2.8.3
+Requires:	libxslt-devel >= 1.1.15
 
 %description devel
 Epiphany header files for plugin development.
@@ -88,22 +96,24 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
-rm -f acconfig.h
+gnome-doc-prepare --copy --force
+%{__gnome_doc_common}
 %{__glib_gettextize}
 %{__intltoolize}
-%{__gnome_doc_common}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoheader}
 %{__automake}
 %{__autoconf}
 
 %configure \
 	--disable-schemas-install \
-	--enable-nautilus-view=yes \
+	--enable-dbus \
 	--enable-gtk-doc \
+	--enable-python \
 	--with-html-dir=%{_gtkdocdir}
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
@@ -111,7 +121,7 @@ rm -f acconfig.h
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}-1.6/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.8/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -148,14 +158,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
+%{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
-%dir %{_libdir}/%{name}-1.6
-%dir %{_libdir}/%{name}-1.6/extensions
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/1.8
+%dir %{_libdir}/%{name}/1.8/extensions
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/epiphany-1.6
+%{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
+%{_datadir}/pygtk/*/defs/epiphany.defs
 %{_gtkdocdir}/*
