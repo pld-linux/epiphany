@@ -5,12 +5,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.8.2
+Version:	1.9.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	0a2e479816a1b2845c758e7a5d84a848
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	f44e8dbfe33802ef250e5494579625f5
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -122,7 +122,7 @@ gnome-doc-prepare --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.8/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.9/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -130,6 +130,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.8/extensions
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -r $RPM_BUILD_ROOT%{_datadir}/application-registry/*
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/1.9/plugins/*.la
 
 # epiphany-2.0.mo, but gnome/help/epiphany
 %find_lang %{name}-2.0 --with-gnome --all-name
@@ -163,12 +164,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/1.8
-%dir %{_libdir}/%{name}/1.8/extensions
+%dir %{_libdir}/%{name}/1.9
+%dir %{_libdir}/%{name}/1.9/extensions
+%dir %{_libdir}/%{name}/1.9/plugins
+%attr(755,root,root) %{_libdir}/epiphany/1.9/plugins/*.so*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
+%{_aclocaldir}/*
 %{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
 %{_datadir}/pygtk/*/defs/epiphany.defs
