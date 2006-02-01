@@ -16,6 +16,7 @@ Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
 Patch3:		%{name}-pld-homepage.patch
 Patch4:		%{name}-configure.patch
+Patch5:		%{name}-m4.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -98,6 +99,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 gnome-doc-prepare --copy --force
