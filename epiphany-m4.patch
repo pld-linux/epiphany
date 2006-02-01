@@ -1,0 +1,16 @@
+diff -aurN epiphany-1.9.6.orig/m4/gecko.m4 epiphany-1.9.6/m4/gecko.m4
+--- epiphany-1.9.6.orig/m4/gecko.m4	2006-01-14 22:06:47.000000000 +0100
++++ epiphany-1.9.6/m4/gecko.m4	2006-02-01 18:54:31.131476000 +0100
+@@ -88,9 +88,9 @@
+ xulrunner) gecko_cv_gecko_flavour=toolkit ;;
+ esac
+ 
+-_GECKO_INCLUDE_ROOT="`$PKG_CONFIG --variable=includedir ${gecko_cv_gecko}-gtkmozembed`"
+-_GECKO_HOME="`$PKG_CONFIG --variable=libdir ${gecko_cv_gecko}-gtkmozembed`"
+-_GECKO_PREFIX="`$PKG_CONFIG --variable=prefix ${gecko_cv_gecko}-gtkmozembed`"
++_GECKO_INCLUDE_ROOT="`$PKG_CONFIG --variable=includedir ${gecko_cv_gecko}-xpcom`"
++_GECKO_HOME="`$PKG_CONFIG --variable=libdir ${gecko_cv_gecko}-xpcom`"
++_GECKO_PREFIX="`$PKG_CONFIG --variable=prefix ${gecko_cv_gecko}-xpcom`"
+ 
+ fi # if gecko_cv_have_gecko
+ 
