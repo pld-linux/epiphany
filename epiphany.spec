@@ -5,17 +5,17 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.8.3
+Version:	1.9.8
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	317e18f1d415a37d3b9934c106edf34a
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	6fbbe70693b00c743d70888c05e1fee4
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
-Patch3:		%{name}-mozilla.patch
-Patch4:		%{name}-pld-homepage.patch
+Patch3:		%{name}-pld-homepage.patch
+Patch4:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -42,7 +42,6 @@ BuildRequires:	mozilla-firefox-devel >= 1.0.5
 BuildRequires:	mozilla-devel >= 5:1.7.9
 %endif
 BuildRequires:	pkgconfig
-# Requries but python package not present?
 BuildRequires:	python-gnome-devel >= 2.6.0
 BuildRequires:	python-pygtk-devel >= 2.6.0
 BuildRequires:	rpmbuild(macros) >= 1.197
@@ -50,6 +49,7 @@ BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
+Requires:	dbus >= 0.34
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	gtk+2 >= 2:2.8.3
 %if %{with mozilla_firefox}
@@ -122,14 +122,14 @@ gnome-doc-prepare --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.8/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.9/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
-rm -r $RPM_BUILD_ROOT%{_datadir}/application-registry/*
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/1.9/plugins/*.la
 
 # epiphany-2.0.mo, but gnome/help/epiphany
 %find_lang %{name}-2.0 --with-gnome --all-name
@@ -138,12 +138,14 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/application-registry/*
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%gconf_schema_install epiphany-fonts.schemas
 %gconf_schema_install epiphany-lockdown.schemas
 %gconf_schema_install epiphany.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
 
 %preun
+%gconf_schema_uninstall epiphany-fonts.schemas
 %gconf_schema_uninstall epiphany-lockdown.schemas
 %gconf_schema_uninstall epiphany.schemas
 
@@ -155,20 +157,24 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/bonobo/servers/*
+%{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/1.8
-%dir %{_libdir}/%{name}/1.8/extensions
+%dir %{_libdir}/%{name}/1.9
+%dir %{_libdir}/%{name}/1.9/extensions
+%dir %{_libdir}/%{name}/1.9/plugins
+%attr(755,root,root) %{_libdir}/epiphany/1.9/plugins/*.so*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
+%{_aclocaldir}/*
 %{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
 %{_datadir}/pygtk/*/defs/epiphany.defs
