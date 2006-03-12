@@ -1,16 +1,17 @@
 # Conditinal build:
 %bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
 #
+%define		basever	2.14
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	1.9.99
+Version:	2.14.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/1.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	bd290f72168131ac8cab88307c0a9a91
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
+# Source0-md5:	6a4b91205aa610e4b3f11bfdd86aad12
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -122,14 +123,14 @@ gnome-doc-prepare --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/1.9/extensions
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/1.9/plugins/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 
 # epiphany-2.0.mo, but gnome/help/epiphany
 %find_lang %{name}-2.0 --with-gnome --all-name
@@ -166,10 +167,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/1.9
-%dir %{_libdir}/%{name}/1.9/extensions
-%dir %{_libdir}/%{name}/1.9/plugins
-%attr(755,root,root) %{_libdir}/epiphany/1.9/plugins/*.so*
+%dir %{_libdir}/%{name}/%{basever}
+%dir %{_libdir}/%{name}/%{basever}/extensions
+%dir %{_libdir}/%{name}/%{basever}/plugins
+%attr(755,root,root) %{_libdir}/epiphany/%{basever}/plugins/*.so*
 %{_mandir}/man1/*
 
 %files devel
