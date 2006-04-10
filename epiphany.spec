@@ -6,12 +6,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.14.0
+Version:	2.14.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a4b91205aa610e4b3f11bfdd86aad12
+# Source0-md5:	69f9760646b736d953f24442e0e38f7b
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -141,6 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %gconf_schema_install epiphany-fonts.schemas
 %gconf_schema_install epiphany-lockdown.schemas
+%gconf_schema_install epiphany-pango.schemas
 %gconf_schema_install epiphany.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
@@ -148,6 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %preun
 %gconf_schema_uninstall epiphany-fonts.schemas
 %gconf_schema_uninstall epiphany-lockdown.schemas
+%gconf_schema_uninstall epiphany-pango.schemas
 %gconf_schema_uninstall epiphany.schemas
 
 %postun
@@ -164,6 +166,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
+%{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
