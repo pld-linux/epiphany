@@ -7,7 +7,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	2.14.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
@@ -53,6 +53,7 @@ Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.60
 Requires:	gnome-icon-theme >= 2.14.0
 Requires:	gtk+2 >= 2:2.8.3
+Requires:	libgnomeui >= 2.14.0
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
