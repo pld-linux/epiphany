@@ -6,12 +6,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.14.1.1
+Version:	2.14.2.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	f5770a6a934997382b91349bdc40af04
+# Source0-md5:	872ef8d5e95cdc359f93b5ded501d98d
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
@@ -24,10 +24,10 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
 BuildRequires:	dbus-glib-devel >= 0.60
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gnome-desktop-devel >= 2.14.0
+BuildRequires:	gnome-desktop-devel >= 2.14.2
 BuildRequires:	gnome-doc-utils >= 0.3.2-1
-BuildRequires:	gnome-vfs2-devel >= 2.14.0
-BuildRequires:	gtk+2-devel >= 2:2.8.3
+BuildRequires:	gnome-vfs2-devel >= 2.14.2
+BuildRequires:	gtk+2-devel >= 2:2.8.18
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.33
 BuildRequires:	iso-codes >= 0.35
@@ -52,8 +52,8 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.60
 Requires:	gnome-icon-theme >= 2.14.0
-Requires:	gtk+2 >= 2:2.8.3
-Requires:	libgnomeui >= 2.14.0
+Requires:	gtk+2 >= 2:2.8.18
+Requires:	libgnomeui >= 2.14.1
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
@@ -81,7 +81,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.8.3
+Requires:	gtk+2-devel >= 2:2.8.18
 Requires:	libxslt-devel >= 1.1.15
 
 %description devel
