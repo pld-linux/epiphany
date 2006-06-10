@@ -1,65 +1,52 @@
-#
-# Conditinal build:
-%bcond_without	mozilla_firefox	# build with mozilla instead of mozilla-firefox
-#
-%define		basever	2.14
+%define		basever	2.15
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.14.2.1
+Version:	2.15.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	872ef8d5e95cdc359f93b5ded501d98d
+# Source0-md5:	eb9826f106b29168a8154dbf4aaaf718
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-mozilla_includes.patch
-Patch3:		%{name}-pld-homepage.patch
-Patch4:		%{name}-configure.patch
+Patch2:		%{name}-pld-homepage.patch
+Patch3:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
 BuildRequires:	dbus-glib-devel >= 0.60
-BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gnome-desktop-devel >= 2.14.2
-BuildRequires:	gnome-doc-utils >= 0.3.2-1
-BuildRequires:	gnome-vfs2-devel >= 2.14.2
-BuildRequires:	gtk+2-devel >= 2:2.8.18
+BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-desktop-devel >= 2.15.2
+BuildRequires:	gnome-doc-utils >= 0.6.0
+BuildRequires:	gnome-vfs2-devel >= 2.15.1
+BuildRequires:	gtk+2-devel >= 2:2.9.2
 BuildRequires:	gtk-doc >= 1.3
-BuildRequires:	intltool >= 0.33
+BuildRequires:	intltool >= 0.35
 BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeprintui-devel >= 2.12.0
-BuildRequires:	libgnomeui-devel >= 2.14.1
+BuildRequires:	libgnomeui-devel >= 2.15.1
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
-BuildRequires:	libxslt-devel >= 1.1.15
-%if %{with mozilla_firefox}
+BuildRequires:	libxslt-devel >= 1.1.17
 BuildRequires:	mozilla-firefox-devel >= 1.0.5
-%else
-BuildRequires:	mozilla-devel >= 5:1.7.9
-%endif
 BuildRequires:	pkgconfig
-BuildRequires:	python-gnome-devel >= 2.6.0
-BuildRequires:	python-pygtk-devel >= 2.6.0
+BuildRequires:	python-gnome-devel >= 2.15.1
+BuildRequires:	python-pygtk-devel >= 2.9.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.60
-Requires:	gnome-icon-theme >= 2.14.0
-Requires:	gtk+2 >= 2:2.8.18
-Requires:	libgnomeui >= 2.14.1
-%if %{with mozilla_firefox}
+Requires:	gnome-icon-theme >= 2.15.2
+Requires:	gtk+2 >= 2:2.9.2
+Requires:	libgnomeui >= 2.15.1
 %requires_eq	mozilla-firefox
-%else
-Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
-%endif
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,8 +69,8 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.8.18
-Requires:	libxslt-devel >= 1.1.15
+Requires:	gtk+2-devel >= 2:2.9.2
+Requires:	libxslt-devel >= 1.1.17
 
 %description devel
 Epiphany header files for plugin development.
@@ -100,7 +87,6 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 gnome-doc-prepare --copy --force
@@ -119,9 +105,7 @@ gnome-doc-prepare --copy --force
 	--enable-gtk-doc \
 	--enable-python \
 	--with-html-dir=%{_gtkdocdir}
-# CFLAGS is a hack for gcc 3.3
-%{__make} \
-	CFLAGS="%{rpmcflags} -fno-strict-aliasing"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -131,7 +115,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/tk
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 
 # epiphany-2.0.mo, but gnome/help/epiphany
@@ -147,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install epiphany.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 
 %preun
 %gconf_schema_uninstall epiphany-fonts.schemas
@@ -157,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 
 %files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
@@ -165,7 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
 %{_desktopdir}/*
-%{_pixmapsdir}/*
+%{_iconsdir}/hicolor/*/*/*.png
 %{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
