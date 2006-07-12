@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.15.3
+Version:	2.15.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	5d15996352d15b5a9269035cb28c48e3
+# Source0-md5:	1c0afcfed0340158b65ad720cc2b65e4
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
@@ -18,34 +18,35 @@ BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
-BuildRequires:	dbus-glib-devel >= 0.60
+BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.15.2
-BuildRequires:	gnome-doc-utils >= 0.6.0
-BuildRequires:	gnome-vfs2-devel >= 2.15.1
-BuildRequires:	gtk+2-devel >= 2:2.9.2
-BuildRequires:	gtk-doc >= 1.3
+BuildRequires:	gnome-desktop-devel >= 2.15.4
+BuildRequires:	gnome-doc-utils >= 0.7.1
+BuildRequires:	gnome-vfs2-devel >= 2.15.3
+BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	intltool >= 0.35
 BuildRequires:	iso-codes >= 0.35
-BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeprintui-devel >= 2.12.0
-BuildRequires:	libgnomeui-devel >= 2.15.1
-BuildRequires:	startup-notification-devel >= 0.5
+BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libgnomeprintui-devel >= 2.12.1
+BuildRequires:	libgnomeui-devel >= 2.15.2
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.17
 BuildRequires:	mozilla-firefox-devel >= 1.0.5
 BuildRequires:	pkgconfig
-BuildRequires:	python-gnome-devel >= 2.15.1
-BuildRequires:	python-pygtk-devel >= 2.9.0
+BuildRequires:	python-gnome-devel >= 2.15.4
+BuildRequires:	python-pygtk-devel >= 2.9.3
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
+BuildRequires:	startup-notification-devel >= 0.8
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	gtk+2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
-Requires:	dbus >= 0.60
-Requires:	gnome-icon-theme >= 2.15.2
-Requires:	gtk+2 >= 2:2.9.2
-Requires:	libgnomeui >= 2.15.1
+Requires:	dbus >= 0.62
+Requires:	gnome-icon-theme >= 2.15.3
+Requires:	gtk+2 >= 2:2.10.0
+Requires:	libgnomeui >= 2.15.2
 %requires_eq	mozilla-firefox
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,7 +70,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.9.2
+Requires:	gtk+2-devel >= 2:2.10.0
 Requires:	libxslt-devel >= 1.1.17
 
 %description devel
@@ -98,7 +99,7 @@ gnome-doc-prepare --copy --force
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--enable-dbus \
