@@ -4,7 +4,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	2.15.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
@@ -32,7 +32,7 @@ BuildRequires:	libgnomeprintui-devel >= 2.12.1
 BuildRequires:	libgnomeui-devel >= 2.15.2
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.17
-BuildRequires:	mozilla-firefox-devel >= 1.0.5
+BuildRequires:	mozilla-firefox-devel >= 1.5.0.5
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.15.4
 BuildRequires:	python-pygtk-devel >= 2.9.3
