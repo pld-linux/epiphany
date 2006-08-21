@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.15.91
+Version:	2.15.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	d71e3b524327678a55a74a3e6ebccbc4
+# Source0-md5:	3a525daf4be413df043b12f9d10bc6e8
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
@@ -22,8 +22,8 @@ BuildRequires:	dbus-glib-devel >= 0.71-2
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-desktop-devel >= 2.15.91
 BuildRequires:	gnome-doc-utils >= 0.7.2
-BuildRequires:	gnome-vfs2-devel >= 2.15.91
-BuildRequires:	gtk+2-devel >= 2:2.10.1
+BuildRequires:	gnome-vfs2-devel >= 2.15.92
+BuildRequires:	gtk+2-devel >= 2:2.10.2
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35
 BuildRequires:	iso-codes >= 0.35
@@ -35,17 +35,17 @@ BuildRequires:	libxslt-devel >= 1.1.17
 BuildRequires:	mozilla-firefox-devel >= 1.5.0.6
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.15.90
-BuildRequires:	python-pygtk-devel >= 2.9.5
+BuildRequires:	python-pygtk-devel >= 2.9.6
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2 >= 2.10.1
+Requires(post,postun):	gtk+2 >= 2.10.2
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.15.91
-Requires:	gtk+2 >= 2:2.10.0
+Requires:	gtk+2 >= 2:2.10.2
 Requires:	libgnomeui >= 2.15.91
 %requires_eq	mozilla-firefox
 Obsoletes:	python-epiphany
@@ -70,7 +70,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.10.1
+Requires:	gtk+2-devel >= 2:2.10.2
 Requires:	libxslt-devel >= 1.1.17
 
 %description devel
