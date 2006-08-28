@@ -130,8 +130,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/tk
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 
-# epiphany-2.0.mo, but gnome/help/epiphany
-%find_lang %{name}-2.0 --with-gnome --all-name
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -156,7 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_desktop_database_postun
 %update_icon_cache hicolor
 
-%files -f %{name}-2.0.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
