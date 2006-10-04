@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
-Version:	2.16.0
-Release:	2
+Version:	2.16.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	dd68883fae26a60bfc51072fc3771f26
+# Source0-md5:	25fecb147b1c68cc71d2af2bac727724
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
@@ -20,10 +20,10 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
 BuildRequires:	dbus-glib-devel >= 0.71-2
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.16.0
+BuildRequires:	gnome-desktop-devel >= 2.16.1
 BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.0
-BuildRequires:	gtk+2-devel >= 2:2.10.3
+BuildRequires:	gnome-vfs2-devel >= 2.16.1
+BuildRequires:	gtk+2-devel >= 2:2.10.6
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35
 BuildRequires:	iso-codes >= 0.53
@@ -32,20 +32,20 @@ BuildRequires:	libgnomeprintui-devel >= 2.12.1
 BuildRequires:	libgnomeui-devel >= 2.16.0
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.17
-BuildRequires:	mozilla-firefox-devel >= 1.5.0.6
+BuildRequires:	mozilla-firefox-devel >= 1.5.0.7
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.16.0
-BuildRequires:	python-pygtk-devel >= 2.10.1
+BuildRequires:	python-pygtk-devel >= 2.10.3
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2 >= 2.10.3
+Requires(post,postun):	gtk+2 >= 2.10.6
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.16.0.1
-Requires:	gtk+2 >= 2:2.10.3
+Requires:	gtk+2 >= 2:2.10.6
 Requires:	libgnomeui >= 2.16.0
 %requires_eq	mozilla-firefox
 Obsoletes:	python-epiphany
@@ -70,7 +70,7 @@ Summary(es):	Ficheros de cabecera de Epiphany
 Summary(pl):	Pliki nag³ówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.10.3
+Requires:	gtk+2-devel >= 2:2.10.6
 Requires:	libxslt-devel >= 1.1.17
 
 %description devel
