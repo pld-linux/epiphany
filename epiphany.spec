@@ -127,7 +127,6 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/tk
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 
 %find_lang %{name} --with-gnome
