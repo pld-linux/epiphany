@@ -42,6 +42,7 @@ BuildRequires:	startup-notification-devel >= 0.8
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2 >= 2.10.6
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.16.0.1
