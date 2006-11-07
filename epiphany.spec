@@ -161,7 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*.png
 %{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
