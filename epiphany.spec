@@ -48,7 +48,7 @@ Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.16.0.1
 Requires:	gtk+2 >= 2:2.10.6
 Requires:	libgnomeui >= 2.16.1
-%requires_eq	mozilla-firefox
+%requires_eq	mozilla-firefox-libs
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
