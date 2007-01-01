@@ -1,5 +1,5 @@
 # Conditinal build:
-%bcond_without	mozilla_firefox	# build without mozilla-firefox-devel
+%bcond_with	mozilla_firefox	# build without mozilla-firefox-devel
 #
 %define		basever	2.14
 Summary:	Epiphany - gecko-based GNOME web browser
@@ -7,7 +7,7 @@ Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
 Name:		epiphany
 Version:	2.14.3
-Release:	6.1
+Release:	7
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
@@ -17,6 +17,7 @@ Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mozilla_includes.patch
 Patch3:		%{name}-pld-homepage.patch
 Patch4:		%{name}-configure.patch
+Patch5:		%{name}-no_typeaheadfind_check.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
@@ -40,7 +41,7 @@ BuildRequires:	libxslt-devel >= 1.1.15
 %if %{with mozilla_firefox}
 BuildRequires:	mozilla-firefox-devel >= 2.0-2
 %else
-BuildRequires:	mozilla-devel >= 5:1.7.9
+BuildRequires:	xulrunner-devel >= 1.8.0.4
 %endif
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.6.0
@@ -57,7 +58,7 @@ Requires:	libgnomeui >= 2.14.1
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox
 %else
-Requires:	mozilla-embedded = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla-embedded)
+%requires_eq	xulrunner
 %endif
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -100,6 +101,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
 
 %build
 gnome-doc-prepare --copy --force
