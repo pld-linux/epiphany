@@ -1,0 +1,18 @@
+diff -ur epiphany-2.14.3.orig/embed/mozilla/EphySidebar.cpp epiphany-2.14.3/embed/mozilla/EphySidebar.cpp
+--- epiphany-2.14.3.orig/embed/mozilla/EphySidebar.cpp	2007-01-03 18:28:25.000000000 +0100
++++ epiphany-2.14.3/embed/mozilla/EphySidebar.cpp	2007-01-03 18:29:38.000000000 +0100
+@@ -103,7 +107,7 @@
+ 	return NS_OK;
+ }
+ 
+-#ifdef HAVE_GECKO_1_8_1
++#ifdef HAVE_GECKO_1_9
+ 
+ /* void addMicrosummaryGenerator (in string generatorURL); */
+ NS_IMETHODIMP
+@@ -112,4 +116,4 @@
+ 	return NS_ERROR_NOT_IMPLEMENTED;
+ }
+ 
+-#endif /* HAVE_GECKO_1_8_1 */
++#endif /* HAVE_GECKO_1_9 */
