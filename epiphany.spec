@@ -18,6 +18,7 @@ Patch2:		%{name}-mozilla_includes.patch
 Patch3:		%{name}-pld-homepage.patch
 Patch4:		%{name}-configure.patch
 Patch5:		%{name}-no_typeaheadfind_check.patch
+Patch6:		%{name}-gecko-1_8_1-fix.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
@@ -102,6 +103,7 @@ Pliki nag³ówkowe Epiphany do tworzenia wtyczek.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p0
+%patch6 -p1
 
 %build
 gnome-doc-prepare --copy --force
@@ -119,6 +121,11 @@ gnome-doc-prepare --copy --force
 	--enable-dbus \
 	--enable-gtk-doc \
 	--enable-python \
+	%if %{with mozilla_firefox}
+	--with-gecko=firefox \
+	%else
+	--with-gecko=xulrunner \
+	%endif
 	--with-html-dir=%{_gtkdocdir}
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
