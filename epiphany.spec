@@ -36,23 +36,23 @@ BuildRequires:	iso-codes >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeprintui-devel >= 2.12.0
 BuildRequires:	libgnomeui-devel >= 2.14.0
-BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.15
+BuildRequires:	startup-notification-devel >= 0.5
 %if %{with mozilla_firefox}
 BuildRequires:	mozilla-firefox-devel >= 2.0-2
 %else
-BuildRequires:	xulrunner-devel >= 1.8.0.4
 BuildRequires:	xulrunner >= 1.8.0.4
+BuildRequires:	xulrunner-devel >= 1.8.0.4
 %endif
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.6.0
 BuildRequires:	python-pygtk-devel >= 2.6.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
+Requires(post,preun):	GConf2
 Requires:	dbus >= 0.60
 Requires:	gnome-icon-theme >= 2.14.0
 Requires:	gtk+2 >= 2:2.8.18
@@ -72,7 +72,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GNOME browser based on Gecko (Mozilla rendering engine).
 
 %description -l es
-Navigador Web de GNOME basado en Gecko (el engine plasmante de Mozilla).
+Navigador Web de GNOME basado en Gecko (el engine plasmante de
+Mozilla).
 
 %description -l pl
 Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
