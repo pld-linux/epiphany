@@ -43,6 +43,7 @@ BuildRequires:	libxslt-devel >= 1.1.15
 BuildRequires:	mozilla-firefox-devel >= 2.0-2
 %else
 BuildRequires:	xulrunner-devel >= 1.8.0.4
+BuildRequires:	xulrunner >= 1.8.0.4
 %endif
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.6.0
