@@ -1,8 +1,4 @@
 #
-# todo:
-# - does not build with firefox 2.0,
-#   see http://bugzilla.gnome.org/show_bug.cgi?id=333445
-#
 %define		basever	2.16
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
@@ -38,6 +34,7 @@ BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.17
 BuildRequires:	mozilla-firefox-devel >= 1.5.0.7
+BuildRequires:	mozilla-firefox
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.16.2
 BuildRequires:	python-pygtk-devel >= 2.10.3
