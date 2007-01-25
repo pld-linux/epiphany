@@ -1,5 +1,3 @@
-# Conditinal build:
-%bcond_with	mozilla_firefox	# build without mozilla-firefox-devel
 #
 %define		basever	2.14
 Summary:	Epiphany - gecko-based GNOME web browser
@@ -39,12 +37,8 @@ BuildRequires:	libgnomeui-devel >= 2.14.0
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.15
 BuildRequires:	startup-notification-devel >= 0.5
-%if %{with mozilla_firefox}
-BuildRequires:	mozilla-firefox-devel >= 2.0-2
-%else
 BuildRequires:	xulrunner >= 1.8.0.4
 BuildRequires:	xulrunner-devel >= 1.8.0.4
-%endif
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.6.0
 BuildRequires:	python-pygtk-devel >= 2.6.0
@@ -57,11 +51,7 @@ Requires:	dbus >= 0.60
 Requires:	gnome-icon-theme >= 2.14.0
 Requires:	gtk+2 >= 2:2.8.18
 Requires:	libgnomeui >= 2.14.1
-%if %{with mozilla_firefox}
-%requires_eq	mozilla-firefox
-%else
 %requires_eq	xulrunner
-%endif
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -123,11 +113,7 @@ gnome-doc-prepare --copy --force
 	--enable-dbus \
 	--enable-gtk-doc \
 	--enable-python \
-	%if %{with mozilla_firefox}
-	--with-gecko=firefox \
-	%else
 	--with-gecko=xulrunner \
-	%endif
 	--with-html-dir=%{_gtkdocdir}
 # CFLAGS is a hack for gcc 3.3
 %{__make} \
