@@ -33,8 +33,8 @@ BuildRequires:	libgnomeprintui-devel >= 2.12.1
 BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.17
-BuildRequires:	mozilla-firefox-devel >= 1.5.0.7
-BuildRequires:	mozilla-firefox
+BuildRequires:	xulrunner-devel >= 1.8.0.4
+BuildRequires:	xulrunner
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.16.2
 BuildRequires:	python-pygtk-devel >= 2.10.3
@@ -50,7 +50,7 @@ Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.16.0.1
 Requires:	gtk+2 >= 2:2.10.6
 Requires:	libgnomeui >= 2.16.1
-%requires_eq	mozilla-firefox-libs
+%requires_eq	xulrunner
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
