@@ -1,8 +1,8 @@
 #
 %define		basever	2.16
 Summary:	Epiphany - gecko-based GNOME web browser
-Summary(es):	Epiphany - navigador Web de GNOME basado en gecko
-Summary(pl):	Epiphany - przegl±darka WWW dla GNOME
+Summary(es.UTF-8):   Epiphany - navigador Web de GNOME basado en gecko
+Summary(pl.UTF-8):   Epiphany - przeglƒÖdarka WWW dla GNOME
 Name:		epiphany
 Version:	2.16.2
 Release:	2
@@ -60,17 +60,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GNOME browser based on Gecko (Mozilla rendering engine).
 
-%description -l es
+%description -l es.UTF-8
 Navigador Web de GNOME basado en Gecko (el engine plasmante de Mozilla).
 
-%description -l pl
-Epiphany jest przegl±dark± WWW bazuj±c± na Gecko (mechanizmie
+%description -l pl.UTF-8
+Epiphany jest przeglƒÖdarkƒÖ WWW bazujƒÖcƒÖ na Gecko (mechanizmie
 interpretacji stron Mozilli).
 
 %package devel
 Summary:	Epiphany header files
-Summary(es):	Ficheros de cabecera de Epiphany
-Summary(pl):	Pliki nag≥Ûwkowe Epiphany
+Summary(es.UTF-8):   Ficheros de cabecera de Epiphany
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+2-devel >= 2:2.10.6
@@ -79,22 +79,22 @@ Requires:	libxslt-devel >= 1.1.17
 %description devel
 Epiphany header files for plugin development.
 
-%description devel -l es
+%description devel -l es.UTF-8
 Ficheros de cabecera de Epiphany para desarrollar plug-ins.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe Epiphany do tworzenia wtyczek.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe Epiphany do tworzenia wtyczek.
 
 %package apidocs
 Summary:	Epiphany API documentation
-Summary(pl):	Dokumentacja API Epiphany
+Summary(pl.UTF-8):   Dokumentacja API Epiphany
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 Epiphany API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API Epiphany.
 
 %prep
