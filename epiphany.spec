@@ -1,8 +1,8 @@
 #
 %define		basever	2.16
 Summary:	Epiphany - gecko-based GNOME web browser
-Summary(es.UTF-8):   Epiphany - navigador Web de GNOME basado en gecko
-Summary(pl.UTF-8):   Epiphany - przeglądarka WWW dla GNOME
+Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
+Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.16.2
 Release:	2
@@ -69,8 +69,8 @@ interpretacji stron Mozilli).
 
 %package devel
 Summary:	Epiphany header files
-Summary(es.UTF-8):   Ficheros de cabecera de Epiphany
-Summary(pl.UTF-8):   Pliki nagłówkowe Epiphany
+Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
+Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+2-devel >= 2:2.10.6
@@ -87,7 +87,7 @@ Pliki nagłówkowe Epiphany do tworzenia wtyczek.
 
 %package apidocs
 Summary:	Epiphany API documentation
-Summary(pl.UTF-8):   Dokumentacja API Epiphany
+Summary(pl.UTF-8):	Dokumentacja API Epiphany
 Group:		Documentation
 Requires:	gtk-doc-common
 
