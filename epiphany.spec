@@ -1,30 +1,29 @@
-#
-%define		basever	2.16
+%define		basever		2.16
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.16.2
-Release:	2
+Version:	2.16.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/%{basever}/%{name}-%{version}.tar.bz2
-# Source0-md5:	6d4ca4c3c1fb52b432ad3f5006866b6b
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.16/%{name}-%{version}.tar.bz2
+# Source0-md5:	3ee93d168eb5720a96f4c7adf2cdf2d4
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
 Patch3:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.16.0
-BuildRequires:	ORBit2-devel >= 1:2.14.3
+BuildRequires:	ORBit2-devel >= 1:2.14.6
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
 BuildRequires:	dbus-glib-devel >= 0.71-2
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.16.1
+BuildRequires:	gnome-desktop-devel >= 2.16.3
 BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.2
-BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes >= 0.53
@@ -43,12 +42,11 @@ BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 Requires(post,preun):	GConf2 >= 2.16.0
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2 >= 2:2.10.6
+Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires:	dbus >= 0.91
 Requires:	gnome-icon-theme >= 2.16.0.1
-Requires:	gtk+2 >= 2:2.10.6
 Requires:	libgnomeui >= 2.16.1
 %requires_eq	xulrunner
 Obsoletes:	python-epiphany
@@ -73,7 +71,7 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.10.6
+Requires:	gtk+2-devel >= 2:2.10.9
 Requires:	libxslt-devel >= 1.1.17
 
 %description devel
