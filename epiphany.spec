@@ -1,53 +1,54 @@
-%define		basever		2.16
+%define		basever		2.17
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.16.3
-Release:	2
+Version:	2.17.92
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	3ee93d168eb5720a96f4c7adf2cdf2d4
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	ddb4363fae7f826abd0602a6f08e6cd7
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
 Patch3:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel >= 2.16.0
-BuildRequires:	ORBit2-devel >= 1:2.14.6
+BuildRequires:	GConf2-devel >= 2.18.0.1
+BuildRequires:	ORBit2-devel >= 1:2.14.7
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1.8
-BuildRequires:	dbus-glib-devel >= 0.71-2
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.16.3
-BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gnome-desktop-devel >= 2.17.92
+BuildRequires:	gnome-doc-utils >= 0.9.2
+BuildRequires:	gnome-vfs2-devel >= 2.17.91
 BuildRequires:	gtk+2-devel >= 2:2.10.9
-BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.35.5
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeprintui-devel >= 2.12.1
-BuildRequires:	libgnomeui-devel >= 2.16.1
+BuildRequires:	libgnomeprintui-devel >= 2.17.92
+BuildRequires:	libgnomeui-devel >= 2.17.92
 BuildRequires:	libtool
-BuildRequires:	libxslt-devel >= 1.1.17
-BuildRequires:	xulrunner-devel >= 1.8.0.4
-BuildRequires:	xulrunner
+BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
-BuildRequires:	python-gnome-devel >= 2.16.2
-BuildRequires:	python-pygtk-devel >= 2.10.3
+BuildRequires:	python-gnome-devel >= 2.17.92
+BuildRequires:	python-pygtk-devel >= 2:2.10.4
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
-Requires(post,preun):	GConf2 >= 2.16.0
+BuildRequires:	xulrunner
+BuildRequires:	xulrunner-devel >= 1.8.0.4
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires:	dbus >= 0.91
-Requires:	gnome-icon-theme >= 2.16.0.1
-Requires:	libgnomeui >= 2.16.1
+Requires(post,preun):	GConf2
+Requires:	dbus >= 1.0.2
+Requires:	gnome-icon-theme >= 2.17.91
+Requires:	libgnomeui >= 2.17.92
 %requires_eq	xulrunner
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,7 +60,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GNOME browser based on Gecko (Mozilla rendering engine).
 
 %description -l es.UTF-8
-Navigador Web de GNOME basado en Gecko (el engine plasmante de Mozilla).
+Navigador Web de GNOME basado en Gecko (el engine plasmante de
+Mozilla).
 
 %description -l pl.UTF-8
 Epiphany jest przeglądarką WWW bazującą na Gecko (mechanizmie
@@ -72,7 +74,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+2-devel >= 2:2.10.9
-Requires:	libxslt-devel >= 1.1.17
+Requires:	libxslt-devel >= 1.1.20
 
 %description devel
 Epiphany header files for plugin development.
