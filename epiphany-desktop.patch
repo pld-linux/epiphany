@@ -5,7 +5,7 @@ diff -aurN epiphany-1.9.5.1.orig/data/bme.desktop.in.in epiphany-1.9.5.1/data/bm
  X-GNOME-Bugzilla-Product=epiphany
  X-GNOME-Bugzilla-Component=General
  X-GNOME-Bugzilla-Version=@VERSION@
--Categories=Application;Network;GNOME;GTK;
+-Categories=Network;GNOME;GTK;
 +Categories=GNOME;GTK;Network;
 diff -aurN epiphany-1.9.5.1.orig/data/epiphany.desktop.in.in epiphany-1.9.5.1/data/epiphany.desktop.in.in
 --- epiphany-1.9.5.1.orig/data/epiphany.desktop.in.in	2005-11-29 13:53:29.000000000 +0100
@@ -14,6 +14,6 @@ diff -aurN epiphany-1.9.5.1.orig/data/epiphany.desktop.in.in epiphany-1.9.5.1/da
  X-GNOME-Bugzilla-Product=epiphany
  X-GNOME-Bugzilla-Component=General
  X-GNOME-Bugzilla-Version=@VERSION@
--Categories=Application;Network;GNOME;GTK;WebBrowser;
+-Categories=Network;GNOME;GTK;WebBrowser;
 +Categories=GNOME;GTK;Network;WebBrowser;
  MimeType=text/html;text/xml;application/xhtml+xml;
