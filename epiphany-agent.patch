@@ -1,0 +1,17 @@
+diff -ur epiphany-2.14.3.orig/embed/mozilla/mozilla-embed-single.cpp epiphany-2.14.3/embed/mozilla/mozilla-embed-single.cpp
+--- epiphany-2.14.3.orig/embed/mozilla/mozilla-embed-single.cpp	2007-03-21 22:57:11.000000000 +0100
++++ epiphany-2.14.3/embed/mozilla/mozilla-embed-single.cpp	2007-03-21 22:59:02.000000000 +0100
+@@ -297,10 +297,9 @@
+ 
+ #ifdef HAVE_GECKO_1_8
+ 	pref->SetCharPref ("general.useragent.extra.epiphany", "Epiphany/" EPIPHANY_MAJOR);
+-
+-	/* Unset old prefs, otherwise they end up in the user agent string too */
+-	pref->ClearUserPref ("general.useragent.vendor");
+-	pref->ClearUserPref ("general.useragent.vendorSub");
++	pref->SetCharPref ("general.useragent.vendor", "PLD");
++	pref->SetCharPref ("general.useragent.vendorSub", "2.0");
++	pref->SetCharPref ("general.useragent.vendorComment", "Ac");
+ #else
+ 	pref->SetCharPref ("general.useragent.vendor", "Epiphany");
+ 	pref->SetCharPref ("general.useragent.vendorSub", EPIPHANY_MAJOR);

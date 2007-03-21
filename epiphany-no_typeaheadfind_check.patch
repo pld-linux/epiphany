@@ -1,0 +1,51 @@
+--- configure.ac.orig	2006-12-29 22:39:59.000000000 +0100
++++ configure.ac	2006-12-30 23:19:57.000000000 +0100
+@@ -264,48 +264,6 @@
+ 
+ AC_MSG_RESULT([$have_psm])
+ 
+-# This is only present on toolkit
+-
+-if test "$gecko_cv_gecko_flavour" = "toolkit"; then
+-
+-AC_DEFINE([HAVE_TYPEAHEADFIND],[1],[Define if we have tookit's typeaheadfind])
+-
+-# Make sure we DON'T have the typeaheadfind extension
+-
+-AC_MSG_CHECKING([whether typeaheadfind is broken])
+-
+-GECKO_RUN_IFELSE([],
+-[GECKO_XPCOM_PROGRAM(
+-[[#include <nsIComponentRegistrar.h>]],
+-[[
+-status = 99;
+-nsCOMPtr<nsIComponentRegistrar> registrar;
+-rv = NS_GetComponentRegistrar (getter_AddRefs (registrar));
+-if (NS_FAILED (rv)) break;
+-
+-status = 98;
+-nsCID *classID = nsnull;
+-rv = registrar->ContractIDToCID ("@mozilla.org/typeaheadfind;1", &classID);
+-if (NS_FAILED (rv) || !classID) break;
+-
+-nsCID badClassID = { 0x46590685, 0xbc00, 0x4aac,
+-		     { 0xab, 0xed, 0x2c, 0x10, 0xa5, 0xb9, 0x45, 0xa4 } };
+-
+-status = classID->Equals (badClassID) ? 97 : EXIT_SUCCESS;
+-]]
+-)],
+-[have_broken_typeaheadfind=no],
+-[have_broken_typeaheadfind=yes],
+-[have_broken_typeaheadfind=maybe])
+-
+-AC_MSG_RESULT([$have_broken_typeaheadfind])
+-
+-if test "$have_broken_typeaheadfind" = "yes"; then
+-	AC_MSG_ERROR([You must not compile $gecko_cv_gecko with the "typeaheadfind" extension enabled!])
+-fi
+-
+-fi # gecko_cv_gecko_flavour = toolkit
+-
+ # Make sure we don't accidentally build without PSM support
+ 
+ AC_MSG_CHECKING([whether to include PSM support])
