@@ -10,8 +10,8 @@ diff -ur epiphany-2.14.3.orig/embed/mozilla/mozilla-embed-single.cpp epiphany-2.
 -	pref->ClearUserPref ("general.useragent.vendor");
 -	pref->ClearUserPref ("general.useragent.vendorSub");
 +	pref->SetCharPref ("general.useragent.vendor", "PLD");
-+	pref->SetCharPref ("general.useragent.vendorSub", "2.0");
-+	pref->SetCharPref ("general.useragent.vendorComment", "Ac");
++	pref->SetCharPref ("general.useragent.vendorSub", "3.0");
++	pref->SetCharPref ("general.useragent.vendorComment", "Th");
  #else
  	pref->SetCharPref ("general.useragent.vendor", "Epiphany");
  	pref->SetCharPref ("general.useragent.vendorSub", EPIPHANY_MAJOR);
