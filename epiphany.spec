@@ -3,12 +3,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.18.2
-Release:	4
+Version:	2.18.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	d9a82160bafa4e80091681b19a70ba79
+# Source0-md5:	2e77f3f0651a27cac29224e82c3cc793
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
@@ -24,7 +24,7 @@ BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	gnome-desktop-devel >= 2.18.0
 BuildRequires:	gnome-doc-utils >= 0.10.1
 BuildRequires:	gnome-vfs2-devel >= 2.18.0.1
-BuildRequires:	gtk+2-devel >= 2:2.10.10
+BuildRequires:	gtk+2-devel >= 2:2.10.14
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	iso-codes >= 0.53
@@ -76,7 +76,7 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.10.10
+Requires:	gtk+2-devel >= 2:2.10.14
 Requires:	libxslt-devel >= 1.1.20
 
 %description devel
