@@ -14,10 +14,9 @@ Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.19/%{name}-%{version}.tar.bz2
 # Source0-md5:	9bd85a26913b90b8c81ec6b300f9ecf8
 Patch0:		%{name}-first-tab.patch
-Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-pld-homepage.patch
-Patch3:		%{name}-configure.patch
-Patch4:		%{name}-agent.patch
+Patch1:		%{name}-pld-homepage.patch
+Patch2:		%{name}-configure.patch
+Patch3:		%{name}-agent.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.18.0.1
 BuildRequires:	ORBit2-devel >= 1:2.14.7
@@ -110,7 +109,6 @@ Dokumentacja API Epiphany.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 %{__gnome_doc_prepare}
