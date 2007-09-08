@@ -1,14 +1,18 @@
-%define		basever		2.18
+#
+# TODO:	- add experimental webkit support
+#	- review first-tab patch
+#
+%define		basever		2.19
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.18.3
-Release:	3
+Version:	2.19.91
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	2e77f3f0651a27cac29224e82c3cc793
+Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	9bd85a26913b90b8c81ec6b300f9ecf8
 Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-pld-homepage.patch
@@ -41,7 +45,7 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xulrunner
-BuildRequires:	xulrunner-devel >= 1.8.0.4
+BuildRequires:	xulrunner-devel >= 1.8.1.6-1.20070731.2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -102,7 +106,7 @@ Dokumentacja API Epiphany.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -122,7 +126,9 @@ Dokumentacja API Epiphany.
 	--disable-schemas-install \
 	--enable-dbus \
 	--enable-gtk-doc \
+	--enable-network-manager \
 	--enable-python \
+	--enable-spell-checker \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -168,7 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/*/*.png
+%{_iconsdir}/*/*/apps/*.*
 %{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
