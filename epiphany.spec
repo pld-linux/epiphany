@@ -1,6 +1,8 @@
 #
-# TODO:	- add experimental webkit support
-#	- review first-tab patch
+# TODO:	- review first-tab patch
+#
+#Conditional build:
+%bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
 #
 %define		basever		2.19
 Summary:	Epiphany - gecko-based GNOME web browser
@@ -13,7 +15,7 @@ License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.19/%{name}-%{version}.tar.bz2
 # Source0-md5:	9bd85a26913b90b8c81ec6b300f9ecf8
-Patch0:		%{name}-first-tab.patch
+#Patch0:		%{name}-first-tab.patch
 Patch1:		%{name}-pld-homepage.patch
 Patch2:		%{name}-configure.patch
 Patch3:		%{name}-agent.patch
@@ -29,6 +31,10 @@ BuildRequires:	gnome-doc-utils >= 0.10.1
 BuildRequires:	gnome-vfs2-devel >= 2.18.0.1
 BuildRequires:	gtk+2-devel >= 2:2.10.14
 BuildRequires:	gtk-doc >= 1.8
+%if %{with webkit}
+BuildRequires:	gtk-webkit-devel
+BuildRequires:	libssh2-devel
+%endif
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libglade2-devel >= 1:2.6.0
@@ -43,8 +49,10 @@ BuildRequires:	python-pygtk-devel >= 2:2.10.4
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
+%if %{without webkit}
 BuildRequires:	xulrunner
 BuildRequires:	xulrunner-devel >= 1.8.1.6-1.20070731.2
+%endif
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -53,14 +61,18 @@ Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.18.0
 Requires:	libgnomeui >= 2.18.1
+
 %requires_eq	xulrunner
+%endif
 Obsoletes:	python-epiphany
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%if %{without webkit}
 # can be provided by mozilla or mozilla-embedded
 %define		_noautoreqdep	libgtkembedmoz.so libgtksuperwin.so libxpcom.so
 # we have strict deps for it
 %define		_noautoreq	libxpcom.so
+%endif
 
 %description
 GNOME browser based on Gecko (Mozilla rendering engine).
@@ -123,10 +135,11 @@ Dokumentacja API Epiphany.
 %configure \
 	--disable-schemas-install \
 	--enable-dbus \
-	--enable-gtk-doc \
+	%{?!with_webkit:--enable-gtk-doc} \
 	--enable-network-manager \
-	--enable-python \
+	--enable-python\
 	--enable-spell-checker \
+	%{?with_webkit:--with-engine=webkit} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -181,8 +194,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
+%if %{without webkit}
 %dir %{_libdir}/%{name}/%{basever}/plugins
 %attr(755,root,root) %{_libdir}/epiphany/%{basever}/plugins/*.so*
+%endif
 %{_mandir}/man1/*
 
 %files devel
