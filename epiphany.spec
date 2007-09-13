@@ -61,7 +61,7 @@ Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.18.0
 Requires:	libgnomeui >= 2.18.1
-
+%if %{without webkit}
 %requires_eq	xulrunner
 %endif
 Obsoletes:	python-epiphany
