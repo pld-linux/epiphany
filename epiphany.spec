@@ -10,26 +10,25 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.20.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	651beab72c7a3c0b42b45f5087d4e9b0
-#Patch0:		%{name}-first-tab.patch
-Patch1:		%{name}-pld-homepage.patch
-Patch2:		%{name}-configure.patch
-Patch3:		%{name}-agent.patch
+Patch0:		%{name}-pld-homepage.patch
+Patch1:		%{name}-configure.patch
+Patch2:		%{name}-agent.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel >= 2.18.0.1
-BuildRequires:	ORBit2-devel >= 1:2.14.7
+BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.73
-BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-desktop-devel >= 2.18.0
-BuildRequires:	gnome-doc-utils >= 0.10.1
-BuildRequires:	gnome-vfs2-devel >= 2.18.0.1
-BuildRequires:	gtk+2-devel >= 2:2.10.14
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.20.0
+BuildRequires:	gnome-doc-utils >= 0.12.0
+BuildRequires:	gnome-vfs2-devel >= 2.20.0
+BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
 BuildRequires:	gtk-webkit-devel
@@ -37,15 +36,15 @@ BuildRequires:	libssh2-devel
 %endif
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	iso-codes >= 0.53
-BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeprintui-devel >= 2.18.0
-BuildRequires:	libgnomeui-devel >= 2.18.1
+BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
-BuildRequires:	python-gnome-devel >= 2.18.0
-BuildRequires:	python-pygtk-devel >= 2:2.10.4
+BuildRequires:	python-gnome-devel >= 2.20.0
+BuildRequires:	python-pygtk-devel >= 2:2.12.0
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
@@ -59,8 +58,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
-Requires:	gnome-icon-theme >= 2.18.0
-Requires:	libgnomeui >= 2.18.1
+Requires:	gnome-icon-theme >= 2.20.0
+Requires:	libgnomeui >= 2.20.0
 %if %{without webkit}
 %requires_eq	xulrunner
 %endif
@@ -91,7 +90,7 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.10.14
+Requires:	gtk+2-devel >= 2:2.12.0
 Requires:	libxslt-devel >= 1.1.20
 
 %description devel
@@ -117,10 +116,9 @@ Dokumentacja API Epiphany.
 
 %prep
 %setup -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__gnome_doc_prepare}
