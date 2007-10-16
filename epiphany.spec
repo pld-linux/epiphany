@@ -1,6 +1,4 @@
 #
-# TODO:	- review first-tab patch
-#
 #Conditional build:
 %bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
 #
@@ -9,12 +7,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.20.0
-Release:	2
+Version:	2.20.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	651beab72c7a3c0b42b45f5087d4e9b0
+# Source0-md5:	bacb5c7f1a421f6d5adbec35d4cab3ea
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-agent.patch
@@ -34,7 +32,7 @@ BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libssh2-devel
 %endif
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	intltool >= 0.36.2
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeprintui-devel >= 2.18.0
