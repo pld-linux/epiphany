@@ -18,6 +18,7 @@ Patch1:		%{name}-configure.patch
 Patch2:		%{name}-agent.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	NetworkManager-devel
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
