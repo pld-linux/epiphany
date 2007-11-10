@@ -8,10 +8,10 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.20.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	bacb5c7f1a421f6d5adbec35d4cab3ea
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
@@ -45,6 +45,8 @@ BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.20.0
 BuildRequires:	python-pygtk-devel >= 2:2.12.0
+# support for --with-omf in find_lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
@@ -122,6 +124,9 @@ Dokumentacja API Epiphany.
 %patch1 -p1
 %patch2 -p1
 
+sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+mv po/sr\@{Latn,latin}.po
+
 %build
 %{__gnome_doc_prepare}
 %{__gnome_doc_common}
@@ -153,9 +158,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -192,7 +195,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
-%{_omf_dest_dir}/*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
