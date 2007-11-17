@@ -32,7 +32,6 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
 BuildRequires:	gtk-webkit-devel
-BuildRequires:	gtk-webkitgdk-devel
 BuildRequires:	libssh2-devel
 %endif
 BuildRequires:	intltool >= 0.36.2
@@ -127,6 +126,8 @@ Dokumentacja API Epiphany.
 
 sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
 mv po/sr\@{Latn,latin}.po
+
+sed -i -e 's#WebKitGdk#WebKitGtk#g' configure.ac
 
 %build
 %{__gnome_doc_prepare}
