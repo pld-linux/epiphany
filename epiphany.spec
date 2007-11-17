@@ -32,6 +32,7 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
 BuildRequires:	gtk-webkit-devel
+BuildRequires:	gtk-webkitgdk-devel
 BuildRequires:	libssh2-devel
 %endif
 BuildRequires:	intltool >= 0.36.2
