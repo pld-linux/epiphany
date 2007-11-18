@@ -128,6 +128,9 @@ sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
 mv po/sr\@{Latn,latin}.po
 
 sed -i -e 's#WebKitGdk#WebKitGtk#g' configure.ac
+sed -i -e 's#WebKitGtkPage#WebKitPage#g' embed/webkit/*.cpp embed/webkit/*.h
+sed -i -e 's#webkit_gtk_#webkit_#g' embed/webkit/*.cpp embed/webkit/*.h
+sed -i -e 's#WEBKIT_GTK_PAGE#WEBKIT_PAGE#g' embed/webkit/*.cpp embed/webkit/*.h
 
 %build
 %{__gnome_doc_prepare}
