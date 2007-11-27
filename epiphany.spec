@@ -7,12 +7,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.20.1
-Release:	4
+Version:	2.20.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	bacb5c7f1a421f6d5adbec35d4cab3ea
+# Source0-md5:	587325089ee4bf21f7406d56b9add4ca
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-agent.patch
@@ -45,8 +45,7 @@ BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.20.0
 BuildRequires:	python-pygtk-devel >= 2:2.12.0
-# support for --with-omf in find_lang.sh
-BuildRequires:	rpm-build >= 4.4.9-10
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
@@ -124,7 +123,7 @@ Dokumentacja API Epiphany.
 %patch1 -p1
 %patch2 -p1
 
-sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po
 
 sed -i -e 's#WebKitGdk#WebKitGtk#g' configure.ac
