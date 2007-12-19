@@ -2,17 +2,17 @@
 #Conditional build:
 %bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
 #
-%define		basever		2.20
+%define		basever		2.21
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.20.2
-Release:	2
+Version:	2.21.4
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	587325089ee4bf21f7406d56b9add4ca
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.21/%{name}-%{version}.tar.bz2
+# Source0-md5:	5c2ba919a9e7d3dc0546fe8e3d942fb9
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-agent.patch
@@ -125,11 +125,6 @@ Dokumentacja API Epiphany.
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po
-
-sed -i -e 's#WebKitGdk#WebKitGtk#g' configure.ac
-sed -i -e 's#WebKitGtkPage#WebKitPage#g' embed/webkit/*.cpp embed/webkit/*.h
-sed -i -e 's#webkit_gtk_#webkit_#g' embed/webkit/*.cpp embed/webkit/*.h
-sed -i -e 's#WEBKIT_GTK_PAGE#WEBKIT_PAGE#g' embed/webkit/*.cpp embed/webkit/*.h
 
 %build
 %{__gnome_doc_prepare}
