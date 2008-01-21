@@ -1,7 +1,7 @@
 diff -ur epiphany-2.18.2.orig/embed/mozilla/mozilla-embed-single.cpp epiphany-2.18.2/embed/mozilla/mozilla-embed-single.cpp
 --- epiphany-2.18.2.orig/embed/mozilla/mozilla-embed-single.cpp	2007-03-29 00:32:56.000000000 +0200
 +++ epiphany-2.18.2/embed/mozilla/mozilla-embed-single.cpp	2007-06-12 09:15:23.000000000 +0200
-@@ -272,9 +272,9 @@
+@@ -272,9 +272,8 @@
  
  	pref->SetCharPref ("general.useragent.extra.epiphany", "Epiphany/" UA_VERSION);
  
