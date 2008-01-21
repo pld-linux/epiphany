@@ -9,8 +9,7 @@ diff -ur epiphany-2.18.2.orig/embed/mozilla/mozilla-embed-single.cpp epiphany-2.
 -	pref->ClearUserPref ("general.useragent.vendor");
 -	pref->ClearUserPref ("general.useragent.vendorSub");
 +	pref->SetCharPref ("general.useragent.vendor", "PLD");
-+	pref->SetCharPref ("general.useragent.vendorSub", "3.0");
-+	pref->SetCharPref ("general.useragent.vendorComment", "Th");
++	pref->SetCharPref ("general.useragent.vendorSub", "Titanium");
  
  	/* Don't open ftp uris with an external handler if one is setup */
  	pref->SetBoolPref ("network.protocol-handler.external.ftp", PR_FALSE);	
