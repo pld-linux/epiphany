@@ -2,17 +2,17 @@
 #Conditional build:
 %bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
 #
-%define		basever		2.21
+%define		basever		2.22
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.21.92
+Version:	2.22.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	2e0199851122ecb9d5f2863d92e18aa8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	81ad67d1ad706930a295a7ed9887bf5f
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-agent.patch
@@ -27,7 +27,7 @@ BuildRequires:	enchant-devel >= 1.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
+BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
@@ -38,7 +38,7 @@ BuildRequires:	intltool >= 0.36.2
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeprintui-devel >= 2.18.0
-BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -59,8 +59,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
-Requires:	gnome-icon-theme >= 2.20.0
-Requires:	libgnomeui >= 2.20.0
+Requires:	gnome-icon-theme >= 2.22.0
+Requires:	libgnomeui >= 2.22.0
 %if %{without webkit}
 %requires_eq	xulrunner
 %endif
