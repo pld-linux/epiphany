@@ -156,6 +156,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 	HTML_DIR=%{_gtkdocdir}
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
+rm -rf $RPM_BUILD_ROOT${_iconsdir}/LowContrastLargePrint
 
 %find_lang %{name} --with-gnome --with-omf
 
