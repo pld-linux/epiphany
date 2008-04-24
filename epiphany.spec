@@ -1,21 +1,19 @@
 #
-#Conditional build:
-%bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
-#
 %define		basever		2.22
-Summary:	Epiphany - gecko-based GNOME web browser
-Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
+%define		snap		20080424
+Summary:	Epiphany - WebKit-based GNOME web browser
+Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.22.1.1
-Release:	2
+Version:	2.23.0.1
+Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	24bb8c430a6165b9c43a2ed0452cc6a5
+# Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.24/%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{snap}.tar.bz2
+# Source0-md5:	9895cf3be1387a0be83b6f43e83a99b1
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
-Patch2:		%{name}-agent.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	NetworkManager-devel
@@ -30,10 +28,8 @@ BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
-%if %{with webkit}
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libssh2-devel
-%endif
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libglade2-devel >= 1:2.6.2
@@ -49,10 +45,6 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
-%if %{without webkit}
-BuildRequires:	xulrunner
-BuildRequires:	xulrunner-devel >= 1.8.1.6-1.20070731.2
-%endif
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -61,31 +53,20 @@ Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.22.0
 Requires:	libgnomeui >= 2.22.0
-%if %{without webkit}
-%requires_eq	xulrunner
-%endif
 Obsoletes:	python-epiphany
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%if %{without webkit}
-# can be provided by mozilla or mozilla-embedded
-%define		_noautoreqdep	libgtkembedmoz.so libgtksuperwin.so libxpcom.so
-# we have strict deps for it
-%define		_noautoreq	libxpcom.so
-%endif
-
 %description
-GNOME browser based on Gecko (Mozilla rendering engine).
+GNOME browser based on WebKit rendering engine.
 
 %description -l es.UTF-8
-Navigador Web de GNOME basado en Gecko (el engine plasmante de
-Mozilla).
+Navigador Web de GNOME basado en WebKit.
 
 %description -l pl.UTF-8
-Epiphany jest przeglądarką WWW bazującą na Gecko (mechanizmie
-interpretacji stron Mozilli).
+Epiphany jest przeglądarką WWW bazującą na mechanizmie
+interpretacji stron WebKit.
 
 %package devel
 Summary:	Epiphany header files
@@ -118,10 +99,9 @@ Epiphany API documentation.
 Dokumentacja API Epiphany.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po
@@ -139,11 +119,9 @@ mv po/sr\@{Latn,latin}.po
 %configure \
 	--disable-schemas-install \
 	--enable-dbus \
-	%{?!with_webkit:--enable-gtk-doc} \
 	--enable-network-manager \
 	--enable-python\
 	--enable-spell-checker \
-	%{?with_webkit:--with-engine=webkit} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -164,18 +142,14 @@ rm -rf $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install epiphany-fonts.schemas
 %gconf_schema_install epiphany-lockdown.schemas
-%gconf_schema_install epiphany-pango.schemas
 %gconf_schema_install epiphany.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
 
 %preun
-%gconf_schema_uninstall epiphany-fonts.schemas
 %gconf_schema_uninstall epiphany-lockdown.schemas
-%gconf_schema_uninstall epiphany-pango.schemas
 %gconf_schema_uninstall epiphany.schemas
 
 %postun
@@ -191,17 +165,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_iconsdir}/*/*/apps/*.*
-%{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
-%{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
-%if %{without webkit}
-%dir %{_libdir}/%{name}/%{basever}/plugins
-%attr(755,root,root) %{_libdir}/epiphany/%{basever}/plugins/*.so*
-%endif
 %{_mandir}/man1/*
 
 %files devel
