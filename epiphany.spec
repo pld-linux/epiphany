@@ -20,6 +20,7 @@ BuildRequires:	NetworkManager-devel
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	avahi-gobject-devel
 BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	enchant-devel >= 1.0
 BuildRequires:	gnome-common >= 2.20.0
@@ -159,7 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog* NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
