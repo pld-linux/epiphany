@@ -15,7 +15,8 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.22/%{name}-%{version}
 # Source0-md5:	24bb8c430a6165b9c43a2ed0452cc6a5
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
-Patch2:		%{name}-agent.patch
+Patch2:		%{name}-ti-agent.patch
+Patch3:		%{name}-agent.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	NetworkManager-devel
@@ -45,6 +46,7 @@ BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-devel >= 2.20.0
 BuildRequires:	python-pygtk-devel >= 2:2.12.0
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
@@ -121,7 +123,11 @@ Dokumentacja API Epiphany.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%if "%{pld_release}" == "ti"
 %patch2 -p1
+%else
+%patch3 -p1
+%endif
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po
