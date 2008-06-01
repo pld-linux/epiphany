@@ -1,0 +1,12 @@
+diff -urN epiphany-2.22.2/configure.ac epiphany-2.22.2.new/configure.ac
+--- epiphany-2.22.2/configure.ac	2008-06-01 16:45:18.000000000 +0200
++++ epiphany-2.22.2.new/configure.ac	2008-06-01 16:48:10.000000000 +0200
+@@ -66,6 +66,8 @@
+ 
+ AC_LIBTOOL_DLOPEN
+ AC_PROG_LIBTOOL
++dnl when using libtool 2.x create libtool early, because it's used in configure
++m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
