@@ -1,6 +1,6 @@
 #
 %define		basever		2.22
-%define		snap		20080424
+%define		snap		20080618
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
@@ -11,7 +11,7 @@ License:	GPL v2
 Group:		X11/Applications/Networking
 # Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.24/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	9895cf3be1387a0be83b6f43e83a99b1
+# Source0-md5:	f438c0677c7dd92c42d18d32c76fa617
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
@@ -121,7 +121,7 @@ mv po/sr\@{Latn,latin}.po
 	--disable-schemas-install \
 	--enable-dbus \
 	--enable-network-manager \
-	--enable-python\
+	--enable-python=2.5 \
 	--enable-spell-checker \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
@@ -178,7 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/*
 %{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
-%{_datadir}/pygtk/*/defs/epiphany.defs
+#%{_datadir}/pygtk/*/defs/epiphany.defs
 
 %files apidocs
 %defattr(644,root,root,755)
