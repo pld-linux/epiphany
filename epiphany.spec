@@ -8,7 +8,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.22.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.22/%{name}-%{version}.tar.bz2
@@ -18,6 +18,7 @@ Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
 Patch3:		%{name}-agent.patch
 Patch4:		%{name}-lt.patch
+Patch5:		%{name}-libxul.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	NetworkManager-devel
@@ -54,7 +55,7 @@ BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 %if %{without webkit}
 BuildRequires:	xulrunner
-BuildRequires:	xulrunner-devel >= 1.8.1.6-1.20070731.2
+BuildRequires:	xulrunner-devel >= 1.9-5
 %endif
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
@@ -130,6 +131,7 @@ Dokumentacja API Epiphany.
 %patch3 -p1
 %endif
 %patch4 -p1
+%patch5 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
@@ -149,9 +151,12 @@ mv po/sr@{Latn,latin}.po
 	--enable-dbus \
 	%{?!with_webkit:--enable-gtk-doc} \
 	--enable-network-manager \
-	--enable-python\
-	--enable-spell-checker \
-	%{?with_webkit:--with-engine=webkit} \
+	--enable-python \
+	%if %{with webkit}
+	--with-engine=webkit \
+	%else
+	--with-gecko=libxul-embedding \
+	%endif
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
