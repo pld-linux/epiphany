@@ -1,0 +1,56 @@
+diff -urN epiphany-2.22.2/embed/mozilla/ContentHandler.cpp epiphany-2.22.2.new/embed/mozilla/ContentHandler.cpp
+--- epiphany-2.22.2/embed/mozilla/ContentHandler.cpp	2008-05-26 19:56:35.000000000 +0200
++++ epiphany-2.22.2.new/embed/mozilla/ContentHandler.cpp	2008-07-08 12:15:59.000000000 +0200
+@@ -135,6 +135,7 @@
+ 				    nsISupports *aWindowContext,
+ 				    const PRUnichar *aDefaultFile,
+ 				    const PRUnichar *aSuggestedFileExtension,
++				    PRBool,
+ 				    nsILocalFile **_retval)
+ {
+ 	EphyFileChooser *dialog;
+diff -urN epiphany-2.22.2/embed/mozilla/Makefile.am epiphany-2.22.2.new/embed/mozilla/Makefile.am
+--- epiphany-2.22.2/embed/mozilla/Makefile.am	2008-05-26 19:56:35.000000000 +0200
++++ epiphany-2.22.2.new/embed/mozilla/Makefile.am	2008-07-08 12:16:41.000000000 +0200
+@@ -115,6 +115,7 @@
+ 	cookie			\
+ 	docshell		\
+ 	dom			\
++	downloads		\
+ 	exthandler		\
+ 	fastfind		\
+ 	helperAppDlg		\
+@@ -122,9 +123,11 @@
+ 	gfx			\
+ 	gtkembedmoz		\
+ 	history			\
++	intl			\
+ 	js			\
+ 	layout			\
+ 	locale			\
++	loginmgr		\
+ 	mimetype		\
+ 	necko			\
+ 	nkcache			\
+@@ -145,7 +148,8 @@
+ 	windowwatcher		\
+ 	xmlextras		\
+ 	xpcom			\
+-	xpconnect
++	xpconnect		\
++	xulapp
+ 
+ libephymozillaembed_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/lib	    		\
+diff -urN epiphany-2.22.2/m4/gecko.m4 epiphany-2.22.2.new/m4/gecko.m4
+--- epiphany-2.22.2/m4/gecko.m4	2008-03-31 23:55:01.000000000 +0200
++++ epiphany-2.22.2.new/m4/gecko.m4	2008-07-08 12:15:59.000000000 +0200
+@@ -116,7 +116,7 @@
+ 	_GECKO_PREFIX="`$PKG_CONFIG --variable=prefix ${gecko_cv_gecko}-xpcom`"
+ 	_GECKO_NSPR=no # XXX asac: this is currently a blind guess and should be a AC test
+ else
+-	_GECKO_INCLUDE_ROOT="`$PKG_CONFIG --variable=includedir ${gecko_cv_gecko}`/unstable"
++	_GECKO_INCLUDE_ROOT="`$PKG_CONFIG --variable=includedir ${gecko_cv_gecko}`"
+ 	_GECKO_CFLAGS="`$PKG_CONFIG --cflags ${gecko_cv_gecko}` `$PKG_CONFIG --cflags ${gecko_cv_gecko}-unstable`"
+ 	_GECKO_LIBDIR="`$PKG_CONFIG --variable=sdkdir ${gecko_cv_gecko}`/bin"
+ 	_GECKO_HOME=$with_gecko_home
