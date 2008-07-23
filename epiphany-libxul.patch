@@ -1,14 +1,3 @@
-diff -urN epiphany-2.22.2/embed/mozilla/ContentHandler.cpp epiphany-2.22.2.new/embed/mozilla/ContentHandler.cpp
---- epiphany-2.22.2/embed/mozilla/ContentHandler.cpp	2008-05-26 19:56:35.000000000 +0200
-+++ epiphany-2.22.2.new/embed/mozilla/ContentHandler.cpp	2008-07-08 12:15:59.000000000 +0200
-@@ -135,6 +135,7 @@
- 				    nsISupports *aWindowContext,
- 				    const PRUnichar *aDefaultFile,
- 				    const PRUnichar *aSuggestedFileExtension,
-+				    PRBool,
- 				    nsILocalFile **_retval)
- {
- 	EphyFileChooser *dialog;
 diff -urN epiphany-2.22.2/embed/mozilla/Makefile.am epiphany-2.22.2.new/embed/mozilla/Makefile.am
 --- epiphany-2.22.2/embed/mozilla/Makefile.am	2008-05-26 19:56:35.000000000 +0200
 +++ epiphany-2.22.2.new/embed/mozilla/Makefile.am	2008-07-08 12:16:41.000000000 +0200
