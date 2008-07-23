@@ -7,18 +7,19 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.22.2
-Release:	2
+Version:	2.22.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	f90dc0a01dae58dfa393b17bce717d3c
+# Source0-md5:	7d058b57cb3e992889e456848fcc89a9
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
 Patch3:		%{name}-agent.patch
 Patch4:		%{name}-lt.patch
 Patch5:		%{name}-libxul.patch
+Patch6:		%{name}-ssl_oldapi.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	NetworkManager-devel
@@ -55,7 +56,7 @@ BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 %if %{without webkit}
 BuildRequires:	xulrunner
-BuildRequires:	xulrunner-devel >= 1.9-5
+BuildRequires:	xulrunner-devel >= 1.9.0.1-1
 %endif
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
@@ -132,6 +133,7 @@ Dokumentacja API Epiphany.
 %endif
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
