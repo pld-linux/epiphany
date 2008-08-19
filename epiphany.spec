@@ -7,19 +7,18 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.23.5
+Version:	2.23.90
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	47ca7802e0dccd1c6ec92bda673a093e
+# Source0-md5:	ee0f5917f6df3d0ffcea5331249d82ed
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
 Patch3:		%{name}-agent.patch
 Patch4:		%{name}-lt.patch
 Patch5:		%{name}-libxul.patch
-Patch6:		%{name}-ssl_oldapi.patch
 Patch7:		%{name}-build_date.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.20.0
@@ -134,7 +133,6 @@ Dokumentacja API Epiphany.
 %endif
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 %patch7 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
