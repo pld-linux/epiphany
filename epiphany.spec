@@ -2,17 +2,17 @@
 #Conditional build:
 %bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
 #
-%define		basever		2.23
+%define		basever		2.24
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.23.91
+Version:	2.24.0.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	280e097f42fcab5f1a76f8e6a59dd741
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.24/%{name}-%{version}.tar.bz2
+# Source0-md5:	24e284d77e782faeec219574def7f34f
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
