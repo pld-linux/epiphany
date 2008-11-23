@@ -1,0 +1,2 @@
+- register in browser-plugins to get plugins into /usr/lib64/epiphany/2.24/plugins
+- add Provides: wwwbrowser
