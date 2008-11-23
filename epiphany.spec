@@ -1,6 +1,6 @@
 #
 #Conditional build:
-%bcond_with	webkit		# Build with experimental webkit suppor instead of xulrunner
+%bcond_with	webkit		# Build with experimental webkit support instead of xulrunner
 #
 %define		basever		2.24
 Summary:	Epiphany - gecko-based GNOME web browser
@@ -52,7 +52,7 @@ BuildRequires:	python-gnome-devel >= 2.20.0
 BuildRequires:	python-pygtk-devel >= 2:2.12.0
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.364
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
 %if %{without webkit}
@@ -67,7 +67,10 @@ Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.22.0
 Requires:	libgnomeui >= 2.22.0
+Provides:	wwwbrowser
 %if %{without webkit}
+Requires:	browser-plugins >= 2.0
+Requires:	browser-plugins(%{_target_base_arch})
 %requires_eq	xulrunner
 %endif
 Obsoletes:	python-epiphany
@@ -150,20 +153,22 @@ Dokumentacja API Epiphany.
 %configure \
 	--disable-schemas-install \
 	--enable-dbus \
-	%{?!with_webkit:--enable-gtk-doc} \
+	%{!?with_webkit:--enable-gtk-doc} \
 	--enable-network-manager \
 	--enable-python \
-	%if %{with webkit}
+%if %{with webkit}
 	--with-engine=webkit \
-	%else
+%else
 	--with-gecko=libxul-embedding \
-	%endif
+%endif
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
+
+%browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/%{basever}/plugins
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -185,6 +190,9 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
+%if %{without webkit}
+%update_browser_plugins
+%endif
 
 %preun
 %gconf_schema_uninstall epiphany-fonts.schemas
@@ -196,10 +204,22 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_postun
 %update_desktop_database_postun
 %update_icon_cache hicolor
+%if %{without webkit}
+if [ "$1" = 0 ]; then
+	%update_browser_plugins
+%endif
+%endif
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
+
+%if %{without webkit}
+# browser plugins v2
+%{_browserpluginsconfdir}/browsers.d/%{name}.*
+%config(noreplace) %verify(not md5 mtime size) %{_browserpluginsconfdir}/blacklist.d/%{name}.*.blacklist
+%endif
+
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
