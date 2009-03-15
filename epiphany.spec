@@ -2,17 +2,17 @@
 #Conditional build:
 %bcond_with	webkit		# Build with experimental webkit support instead of xulrunner
 #
-%define		basever		2.24
+%define		basever		2.26
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.24.3
-Release:	3
+Version:	2.26.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	af51614c7b78f8b8c68e9ece3d8f4d8f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.26/%{name}-%{version}.tar.bz2
+# Source0-md5:	98043cd7332fd3025e9b69f65904e5a4
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
@@ -33,7 +33,7 @@ BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
 BuildRequires:	gtk-webkit-devel
@@ -41,6 +41,7 @@ BuildRequires:	libssh2-devel
 %endif
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	iso-codes >= 0.53
+BuildRequires:	libcanberra-gtk-devel >= 0.3
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeprintui-devel >= 2.18.0
 BuildRequires:	libgnomeui-devel >= 2.22.0
