@@ -7,12 +7,12 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.26.0
+Version:	2.26.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	98043cd7332fd3025e9b69f65904e5a4
+# Source0-md5:	fbe4c76a41983e3d9aaab146b850a93b
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-ti-agent.patch
@@ -22,29 +22,29 @@ Patch5:		%{name}-libxul.patch
 Patch7:		%{name}-build_date.patch
 Patch8:		%{name}-xulrunner-plugins-dir.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel
-BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	avahi-gobject-devel >= 0.6
 BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	enchant-devel >= 1.0
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
 %if %{with webkit}
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libssh2-devel
 %endif
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libcanberra-gtk-devel >= 0.3
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeprintui-devel >= 2.18.0
-BuildRequires:	libgnomeui-devel >= 2.22.0
+BuildRequires:	libgnomeui-devel >= 2.24.0
+BuildRequires:	libnotify-devel >= 0.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -66,8 +66,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	dbus >= 1.0.2
-Requires:	gnome-icon-theme >= 2.22.0
-Requires:	libgnomeui >= 2.22.0
+Requires:	gnome-icon-theme >= 2.26.0
+Requires:	libgnomeui >= 2.24.0
 Provides:	wwwbrowser
 %if %{without webkit}
 Requires:	browser-plugins >= 2.0
@@ -103,8 +103,8 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.12.0
-Requires:	libxslt-devel >= 1.1.20
+Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	libxml2-devel >= 1:2.6.28
 
 %description devel
 Epiphany header files for plugin development.
