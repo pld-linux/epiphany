@@ -1,26 +1,16 @@
-#
-#Conditional build:
-%bcond_with	webkit		# Build with experimental webkit support instead of xulrunner
-#
-%define		basever		2.26
+%define		basever		2.27
 Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.26.1
-Release:	2
+Version:	2.27.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	fbe4c76a41983e3d9aaab146b850a93b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.27/%{name}-%{version}.tar.bz2
+# Source0-md5:	840fb2dc0511039de378927e3bccd802
 Patch0:		%{name}-pld-homepage.patch
 Patch1:		%{name}-configure.patch
-Patch2:		%{name}-ti-agent.patch
-Patch3:		%{name}-agent.patch
-Patch4:		%{name}-lt.patch
-Patch5:		%{name}-libxul.patch
-Patch7:		%{name}-build_date.patch
-Patch8:		%{name}-xulrunner-plugins-dir.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel
@@ -35,10 +25,8 @@ BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
-%if %{with webkit}
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libssh2-devel
-%endif
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libcanberra-gtk-devel >= 0.3
@@ -56,10 +44,6 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.364
 BuildRequires:	scrollkeeper
 BuildRequires:	startup-notification-devel >= 0.8
-%if %{without webkit}
-BuildRequires:	xulrunner
-BuildRequires:	xulrunner-devel >= 1.9.0.1-1
-%endif
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -69,22 +53,10 @@ Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.26.0
 Requires:	libgnomeui >= 2.24.0
 Provides:	wwwbrowser
-%if %{without webkit}
-Requires:	browser-plugins >= 2.0
-Requires:	browser-plugins(%{_target_base_arch})
-%requires_eq	xulrunner
-%endif
 Obsoletes:	python-epiphany
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%if %{without webkit}
-# can be provided by mozilla or mozilla-embedded
-%define		_noautoreqdep	libgtkembedmoz.so libgtksuperwin.so libxpcom.so
-# we have strict deps for it
-%define		_noautoreq	libxpcom.so
-%endif
 
 %description
 GNOME browser based on Gecko (Mozilla rendering engine).
@@ -131,15 +103,6 @@ Dokumentacja API Epiphany.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%if "%{pld_release}" == "ti"
-%patch2 -p1
-%else
-%patch3 -p1
-%endif
-%patch4 -p1
-%patch5 -p1
-%patch7 -p1
-%patch8 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -154,28 +117,19 @@ Dokumentacja API Epiphany.
 %configure \
 	--disable-schemas-install \
 	--enable-dbus \
-	%{!?with_webkit:--enable-gtk-doc} \
+	--enable-gtk-doc \
 	--enable-network-manager \
 	--enable-python \
-%if %{with webkit}
-	--with-engine=webkit \
-%else
-	--with-gecko=libxul-embedding \
-%endif
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
-
-%browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/%{basever}/plugins
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/%{basever}/plugins/*.la
 rm -rf $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
 
 %find_lang %{name} --with-gnome --with-omf
@@ -184,59 +138,32 @@ rm -rf $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install epiphany-fonts.schemas
 %gconf_schema_install epiphany-lockdown.schemas
-%gconf_schema_install epiphany-pango.schemas
 %gconf_schema_install epiphany.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
-%if %{without webkit}
-%update_browser_plugins
-%endif
 
 %preun
-%gconf_schema_uninstall epiphany-fonts.schemas
 %gconf_schema_uninstall epiphany-lockdown.schemas
-%gconf_schema_uninstall epiphany-pango.schemas
 %gconf_schema_uninstall epiphany.schemas
 
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
 %update_icon_cache hicolor
-%if %{without webkit}
-if [ "$1" = 0 ]; then
-	%update_browser_plugins
-fi
-%endif
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-
-%if %{without webkit}
-# browser plugins v2
-%{_browserpluginsconfdir}/browsers.d/%{name}.*
-%config(noreplace) %verify(not md5 mtime size) %{_browserpluginsconfdir}/blacklist.d/%{name}.*.blacklist
-%endif
 
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_iconsdir}/*/*/apps/*.*
-%{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
-%{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/%{basever}
-%dir %{_libdir}/%{name}/%{basever}/extensions
-%if %{without webkit}
-%dir %{_libdir}/%{name}/%{basever}/plugins
-%attr(755,root,root) %{_libdir}/epiphany/%{basever}/plugins/*.so*
-%endif
 %{_mandir}/man1/*
 
 %files devel
