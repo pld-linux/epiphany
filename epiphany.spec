@@ -3,14 +3,13 @@ Summary:	Epiphany - gecko-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en gecko
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.27.2
+Version:	2.27.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.27/%{name}-%{version}.tar.bz2
-# Source0-md5:	6dc0e970a1aa7d176222ef2643e0f7e9
+# Source0-md5:	35f37bf3150614f1d8ff3f21864737ca
 Patch0:		%{name}-pld-homepage.patch
-Patch1:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel
@@ -25,7 +24,7 @@ BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit-devel
+BuildRequires:	gtk-webkit-devel >= 1.1.11
 BuildRequires:	libssh2-devel
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
@@ -38,8 +37,6 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	pkgconfig
-BuildRequires:	python-gnome-devel >= 2.20.0
-BuildRequires:	python-pygtk-devel >= 2:2.12.0
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.364
@@ -54,7 +51,6 @@ Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.26.0
 Requires:	libgnomeui >= 2.24.0
 Provides:	wwwbrowser
-Obsoletes:	python-epiphany
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -103,7 +99,6 @@ Dokumentacja API Epiphany.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -120,7 +115,6 @@ Dokumentacja API Epiphany.
 	--enable-dbus \
 	--enable-gtk-doc \
 	--enable-network-manager \
-	--enable-python \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -172,7 +166,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/*
 %{_includedir}/epiphany
 %{_pkgconfigdir}/*.pc
-%{_datadir}/pygtk/*/defs/epiphany.defs
 
 %files apidocs
 %defattr(644,root,root,755)
