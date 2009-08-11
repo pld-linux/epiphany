@@ -99,6 +99,8 @@ Dokumentacja API Epiphany.
 %prep
 %setup -q
 %patch0 -p1
+rm po/ca@valencia.po
+sed -i s#^ca@valencia## po/LINGUAS
 
 %build
 %{__gnome_doc_prepare}
