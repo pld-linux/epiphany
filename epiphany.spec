@@ -3,7 +3,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.28.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.28/%{name}-%{version}.tar.bz2
@@ -25,6 +25,7 @@ BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk-webkit-devel >= 1.1.15
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
+BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.4
 BuildRequires:	libsoup-gnome-devel >= 2.28.0
 BuildRequires:	libtool
