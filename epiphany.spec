@@ -1,9 +1,10 @@
+%define		basever		2.28
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	2.28.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.28/%{name}-%{version}.tar.bz2
@@ -114,6 +115,7 @@ Dokumentacja API Epiphany.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -152,6 +154,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/*.*
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/%{basever}
+%dir %{_libdir}/%{name}/%{basever}/extensions
 %{_mandir}/man1/*
 
 %files devel
