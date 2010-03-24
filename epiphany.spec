@@ -1,14 +1,14 @@
-%define		basever		2.28
+%define		basever		2.30
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.28.2
+Version:	2.29.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	cf32404bfe6f0cb4d3f01d0c33c08def
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.29/%{name}-%{version}.tar.bz2
+# Source0-md5:	41e774299986eeedd0bc425497a6a127
 Patch0:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.28.0
@@ -20,17 +20,18 @@ BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-keyring-devel >= 2.28.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gobject-introspection-devel >= 0.6.7
+BuildRequires:	gtk+2-devel >= 2:2.19.5
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit-devel >= 1.1.15
+BuildRequires:	gtk-webkit-devel >= 1.1.22
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
+BuildRequires:	libgnome-keyring-devel >= 2.28.0
 BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.4
-BuildRequires:	libsoup-gnome-devel >= 2.28.0
-BuildRequires:	libtool
+BuildRequires:	libsoup-gnome-devel >= 2.29.91
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	nss-devel
@@ -39,12 +40,15 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.364
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 BuildRequires:	startup-notification-devel >= 0.8
+BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
+Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.26.0
 Provides:	wwwbrowser
@@ -67,8 +71,8 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.16.0
-Requires:	gtk-webkit-devel >= 1.1.15
+Requires:	gtk+2-devel >= 2:2.19.5
+Requires:	gtk-webkit-devel >= 1.1.22
 Requires:	libxml2-devel >= 1:2.6.28
 
 %description devel
@@ -96,6 +100,9 @@ Dokumentacja API Epiphany.
 %setup -q
 %patch0 -p1
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gnome_doc_prepare}
 %{__gnome_doc_common}
@@ -107,7 +114,9 @@ Dokumentacja API Epiphany.
 %{__automake}
 %{__autoconf}
 %configure \
+	--disable-silent-rules \
 	--with-distributor-name="PLD Linux" \
+	--with-ca-file=/etc/certs/ca-certificates.crt \
 	--enable-network-manager \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
@@ -148,24 +157,27 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/dbus-1/services/*.service
+%attr(755,root,root) %{_bindir}/epiphany
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %{_datadir}/%{name}
-%{_desktopdir}/*.desktop
+%{_desktopdir}/bme.desktop
+%{_desktopdir}/epiphany.desktop
 %{_iconsdir}/*/*/apps/*.*
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
-%{_mandir}/man1/*
+%{_libdir}/girepository-1.0/Epiphany-*.typelib
+%{_mandir}/man1/epiphany.1*
 
 %files devel
 %defattr(644,root,root,755)
-%{_aclocaldir}/*
+%{_aclocaldir}/epiphany.m4
 %{_includedir}/epiphany
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/epiphany-*.pc
+%{_datadir}/gir-1.0/Epiphany-*.gir
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/*
+%{_gtkdocdir}/epiphany
