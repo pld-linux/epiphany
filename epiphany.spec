@@ -3,12 +3,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.29.92
+Version:	2.30.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.29/%{name}-%{version}.tar.bz2
-# Source0-md5:	41e774299986eeedd0bc425497a6a127
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	c78e40f61dae39b490fcf94e296aa239
 Patch0:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	GConf2-devel >= 2.28.0
@@ -22,7 +22,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.6.7
-BuildRequires:	gtk+2-devel >= 2:2.19.5
+BuildRequires:	gtk+2-devel >= 2:2.20.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk-webkit-devel >= 1.1.22
 BuildRequires:	intltool >= 0.40.0
@@ -30,7 +30,7 @@ BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
 BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.4
-BuildRequires:	libsoup-gnome-devel >= 2.29.91
+BuildRequires:	libsoup-gnome-devel >= 2.30.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -71,7 +71,7 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+2-devel >= 2:2.19.5
+Requires:	gtk+2-devel >= 2:2.20.0
 Requires:	gtk-webkit-devel >= 1.1.22
 Requires:	libxml2-devel >= 1:2.6.28
 
