@@ -1,32 +1,32 @@
-%define		basever		2.29
+%define		basever		2.31
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	2.91.91
-Release:	0.1
+Version:	2.91.91.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	7823126987d56c37d9d51e3aeaada29a
+# Source0-md5:	aee4fb31b5515ea995ac0d443bbbc4b1
 Patch0:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	avahi-devel >= 0.6.22
+BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gobject-introspection-devel >= 0.9.5
+BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk-webkit3-devel >= 1.3.11
-BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
@@ -38,21 +38,22 @@ BuildRequires:	nss-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.364
+BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	sed >= 4.0
-BuildRequires:	seed-devel >= 2.27.91
+BuildRequires:	seed-devel >= 2.28.0
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.26.0
+Requires:	gsettings-desktop-schemas
+Requires:	hicolor-icon-theme
 Provides:	wwwbrowser
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -100,10 +101,7 @@ Dokumentacja API Epiphany.
 
 %prep
 %setup -q
-#patch0 -p1
-
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
+%patch0 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -117,12 +115,12 @@ rm -f po/en@shaw.po
 %{__autoconf}
 %configure \
 	--disable-silent-rules \
+	--disable-schemas-compile \
 	--with-distributor-name="PLD Linux" \
 	--with-ca-file=/etc/certs/ca-certificates.crt \
 	--enable-network-manager \
 	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
-	--disable-schemas-compile
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -133,6 +131,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/HighContrastLargePrint
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/HighContrastLargePrintInverse
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -154,7 +154,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-
 %attr(755,root,root) %{_bindir}/epiphany
 %attr(755,root,root) %{_bindir}/ephy-profile-migrator
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
