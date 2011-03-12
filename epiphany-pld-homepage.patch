@@ -1,12 +1,12 @@
-diff -urN epiphany-1.7.3.orig/data/epiphany.schemas.in epiphany-1.7.3/data/epiphany.schemas.in
---- epiphany-1.7.3.orig/data/epiphany.schemas.in	2005-08-08 17:11:42.962212856 +0200
-+++ epiphany-1.7.3/data/epiphany.schemas.in	2005-08-08 17:12:15.789222392 +0200
-@@ -5,7 +5,7 @@
-         <applyto>/apps/epiphany/general/homepage</applyto>
-         <owner>epiphany</owner>
-         <type>string</type>
--        <default>http://www.google.com</default>
-+        <default>http://www.pld-linux.org</default>
-         <locale name="C">
-         <short>Home page</short>
-         <long>Address of the user's home page.</long>
+diff -urN epiphany-2.91.91.1/data/org.gnome.epiphany.gschema.xml.in epiphany-2.91.91.1.new//data/org.gnome.epiphany.gschema.xml.in
+--- epiphany-2.91.91.1/data/org.gnome.epiphany.gschema.xml.in	2011-03-09 20:31:34.000000000 +0000
++++ epiphany-2.91.91.1.new//data/org.gnome.epiphany.gschema.xml.in	2011-03-12 22:28:47.150000020 +0000
+@@ -10,7 +10,7 @@
+ 			<summary>Browse with caret</summary>
+ 		</key>
+ 		<key type="s" name="homepage-url">
+-			<default>'http://www.google.com'</default>
++			<default>'http://www.pld-linux.org'</default>
+ 			<summary>Home page</summary>
+ 			<description>Address of the user's home page.</description>
+ 		</key>
