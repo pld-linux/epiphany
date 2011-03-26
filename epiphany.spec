@@ -41,7 +41,6 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.364
 BuildRequires:	scrollkeeper
-BuildRequires:	sed >= 4.0
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
@@ -64,7 +63,7 @@ GNOME browser based on WebKit.
 Navigador Web de GNOME basado en WebKit.
 
 %description -l pl.UTF-8
-Epiphany jest przeglądarką WWW bazującą na WebKit.
+Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 
 %package devel
 Summary:	Epiphany header files
@@ -101,9 +100,6 @@ Dokumentacja API Epiphany.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__gnome_doc_prepare}
 %{__gnome_doc_common}
@@ -131,7 +127,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/LowContrastLargePrint
 
 %find_lang %{name} --with-gnome --with-omf
 
