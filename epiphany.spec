@@ -3,12 +3,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.0.0
+Version:	3.0.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	b3ab9c49867de2e4c2458a4c9fada4cd
+# Source0-md5:	81aede3d9864eb4285a6dcb349069649
 Patch0:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	NetworkManager-devel
@@ -26,7 +26,7 @@ BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit3-devel >= 1.3.11
+BuildRequires:	gtk-webkit3-devel >= 1.4.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
@@ -53,6 +53,7 @@ Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 2.26.0
 Requires:	gsettings-desktop-schemas
+Requires:	gtk-webkit3 >= 1.4.0
 Requires:	hicolor-icon-theme
 Provides:	wwwbrowser
 # sr@Latn vs. sr@latin
@@ -75,7 +76,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
 Requires:	gtk+3-devel >= 3.0.2
-Requires:	gtk-webkit3-devel >= 1.3.11
+Requires:	gtk-webkit3-devel >= 1.4.0
 Requires:	libxml2-devel >= 1:2.6.28
 
 %description devel
