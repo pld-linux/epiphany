@@ -3,30 +3,28 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.0.3
+Version:	3.2.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	3227d5e94f881d8a6009f945ed573e8e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	b17e955680cdccd06bd2ee741cf671ec
 Patch0:		%{name}-pld-homepage.patch
 URL:		http://www.gnome.org/projects/epiphany/
-BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
-BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit3-devel >= 1.4.0
+BuildRequires:	gtk-webkit3-devel >= 1.6.1
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
@@ -41,10 +39,12 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	sed >= 4.0
 BuildRequires:	seed-devel >= 2.28.0
-BuildRequires:	startup-notification-devel >= 0.8
+BuildRequires:	libnotify-devel >= 0.5.1
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
