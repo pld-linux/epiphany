@@ -3,13 +3,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.2.1
+Version:	3.4.0.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	b07a47656a07f695c70eb56b628f9df7
-Patch0:		%{name}-pld-homepage.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	3acd1e96f9dd7d92f4041ddef934bbfe
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -17,18 +16,19 @@ BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit3-devel >= 1.6.1
+BuildRequires:	gtk-webkit3-devel >= 1.8.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
-BuildRequires:	libsoup-gnome-devel >= 2.34.0
+BuildRequires:	libnotify-devel >= 0.5.1
+BuildRequires:	libsoup-gnome-devel >= 2.37.1
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -38,8 +38,7 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	sed >= 4.0
-BuildRequires:	seed-devel >= 2.28.0
-BuildRequires:	libnotify-devel >= 0.5.1
+BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
@@ -47,14 +46,12 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
-Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
-Requires:	gnome-icon-theme >= 2.26.0
+Requires:	gnome-icon-theme >= 3.3.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk-webkit3 >= 1.4.0
-Requires:	hicolor-icon-theme
+Requires:	gtk-webkit3 >= 1.8.0
 Provides:	wwwbrowser
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -75,8 +72,8 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+3-devel >= 3.0.2
-Requires:	gtk-webkit3-devel >= 1.4.0
+Requires:	gtk+3-devel >= 3.4.0
+Requires:	gtk-webkit3-devel >= 1.8.0
 Requires:	libxml2-devel >= 1:2.6.28
 
 %description devel
@@ -102,7 +99,6 @@ Dokumentacja API Epiphany.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -118,8 +114,6 @@ Dokumentacja API Epiphany.
 	--disable-silent-rules \
 	--disable-schemas-compile \
 	--with-distributor-name="PLD Linux" \
-	--with-ca-file=/etc/certs/ca-certificates.crt \
-	--enable-network-manager \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
@@ -139,13 +133,11 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %scrollkeeper_update_post
 %update_desktop_database_post
-%update_icon_cache hicolor
 %glib_compile_schemas
 
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
-%update_icon_cache hicolor
 %glib_compile_schemas
 
 %files -f %{name}.lang
@@ -158,14 +150,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/GConf/gsettings/epiphany.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
-%{_desktopdir}/bme.desktop
 %{_desktopdir}/epiphany.desktop
-%{_iconsdir}/*/*/apps/*.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
 %{_libdir}/girepository-1.0/Epiphany-*.typelib
-%{_libdir}/girepository-1.0/EphyEgg-*.typelib
 %{_mandir}/man1/epiphany.1*
 
 %files devel
@@ -174,7 +163,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/epiphany
 %{_pkgconfigdir}/epiphany-*.pc
 %{_datadir}/gir-1.0/Epiphany-*.gir
-%{_datadir}/gir-1.0/EphyEgg-*.gir
 
 %files apidocs
 %defattr(644,root,root,755)
