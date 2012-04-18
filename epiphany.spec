@@ -3,12 +3,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.4.0.1
-Release:	2
+Version:	3.4.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	3acd1e96f9dd7d92f4041ddef934bbfe
+# Source0-md5:	7c43e43bdeb1739388c5128b56493892
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -28,7 +28,7 @@ BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libsoup-gnome-devel >= 2.37.1
+BuildRequires:	libsoup-gnome-devel >= 2.38.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -49,7 +49,7 @@ Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	scrollkeeper
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
-Requires:	gnome-icon-theme >= 3.3.0
+Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk-webkit3 >= 1.8.0
 Provides:	wwwbrowser
