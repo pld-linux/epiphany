@@ -3,32 +3,34 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.4.3
+Version:	3.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	8e71a44c4bd3062777a25a34213e75f4
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	38100bb96d946d9c12f3660be0c0a64c
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gcr-devel >= 3.6.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.4.0
+BuildRequires:	gtk+3-devel >= 3.6.0
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit3-devel >= 1.8.2
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	gtk-webkit3-devel >= 1.10.0
+BuildRequires:	intltool >= 0.50.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libgnome-keyring-devel >= 2.28.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libsoup-gnome-devel >= 2.38.0
+BuildRequires:	libsoup-gnome-devel >= 2.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
@@ -51,7 +53,7 @@ Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk-webkit3 >= 1.8.2
+Requires:	gtk-webkit3 >= 1.10.0
 Provides:	wwwbrowser
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -72,8 +74,8 @@ Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
 Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
 Group:		X11/Applications/Networking
 # doesn't require base
-Requires:	gtk+3-devel >= 3.4.0
-Requires:	gtk-webkit3-devel >= 1.8.2
+Requires:	gtk+3-devel >= 3.6.0
+Requires:	gtk-webkit3-devel >= 1.10.0
 Requires:	libxml2-devel >= 1:2.6.28
 
 %description devel
