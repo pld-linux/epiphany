@@ -4,7 +4,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	3.8.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.8/%{name}-%{version}.tar.xz
@@ -17,21 +17,21 @@ BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-devel >= 3.6.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	glib2-devel >= 1:2.36.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.6.0
-BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	gtk-webkit3-devel >= 1.10.0
+BuildRequires:	gtk+3-devel >= 3.8.0
+BuildRequires:	gtk-webkit3-devel >= 2.0.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	iso-codes >= 0.53
-BuildRequires:	libgnome-keyring-devel >= 2.28.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libsoup-gnome-devel >= 2.40.0
+BuildRequires:	libsecret-devel >= 0.14
+BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
+BuildRequires:	libwnck-devel
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	nss-devel
@@ -51,10 +51,13 @@ Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	scrollkeeper
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
+Requires:	glib2 >= 1:2.36.0
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk-webkit3 >= 1.10.0
+Requires:	gtk-webkit3 >= 2.0.0
 Provides:	wwwbrowser
+Obsoletes:	epiphany-apidocs < 3.8.0-2
+Obsoletes:	epiphany-devel < 3.8.0-2
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,37 +70,6 @@ Navigador Web de GNOME basado en WebKit.
 
 %description -l pl.UTF-8
 Epiphany jest przeglądarką WWW opartą na silniku WebKit.
-
-%package devel
-Summary:	Epiphany header files
-Summary(es.UTF-8):	Ficheros de cabecera de Epiphany
-Summary(pl.UTF-8):	Pliki nagłówkowe Epiphany
-Group:		X11/Applications/Networking
-# doesn't require base
-Requires:	gtk+3-devel >= 3.6.0
-Requires:	gtk-webkit3-devel >= 1.10.0
-Requires:	libxml2-devel >= 1:2.6.28
-
-%description devel
-Epiphany header files for plugin development.
-
-%description devel -l es.UTF-8
-Ficheros de cabecera de Epiphany para desarrollar plug-ins.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe Epiphany do tworzenia wtyczek.
-
-%package apidocs
-Summary:	Epiphany API documentation
-Summary(pl.UTF-8):	Dokumentacja API Epiphany
-Group:		Documentation
-Requires:	gtk-doc-common
-
-%description apidocs
-Epiphany API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API Epiphany.
 
 %prep
 %setup -q
@@ -126,6 +98,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/web-extensions/*.la
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -156,16 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
 %dir %{_libdir}/%{name}/%{basever}/extensions
-%{_libdir}/girepository-1.0/Epiphany-*.typelib
+%dir %{_libdir}/%{name}/%{basever}/web-extensions
+%attr(755,root,root) %{_libdir}/%{name}/%{basever}/web-extensions/libephywebextension.so
 %{_mandir}/man1/epiphany.1*
-
-%files devel
-%defattr(644,root,root,755)
-%{_aclocaldir}/epiphany.m4
-%{_includedir}/epiphany
-%{_pkgconfigdir}/epiphany-*.pc
-%{_datadir}/gir-1.0/Epiphany-*.gir
-
-%files apidocs
-%defattr(644,root,root,755)
-%{_gtkdocdir}/epiphany
