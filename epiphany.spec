@@ -4,7 +4,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	3.8.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.8/%{name}-%{version}.tar.xz
@@ -48,7 +48,6 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
-Requires(post,postun):	scrollkeeper
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	glib2 >= 1:2.36.0
@@ -58,6 +57,7 @@ Requires:	gtk-webkit3 >= 2.0.0
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
 Obsoletes:	epiphany-devel < 3.8.0-2
+Obsoletes:	epiphany-extensions < 3.8.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -87,14 +87,12 @@ Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 %configure \
 	--disable-silent-rules \
 	--disable-schemas-compile \
-	--with-distributor-name="PLD Linux" \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-distributor-name="PLD Linux"
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -107,12 +105,10 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/extensions
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%scrollkeeper_update_post
 %update_desktop_database_post
 %glib_compile_schemas
 
 %postun
-%scrollkeeper_update_postun
 %update_desktop_database_postun
 %glib_compile_schemas
 
@@ -129,7 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/epiphany.desktop
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
-%dir %{_libdir}/%{name}/%{basever}/extensions
 %dir %{_libdir}/%{name}/%{basever}/web-extensions
 %attr(755,root,root) %{_libdir}/%{name}/%{basever}/web-extensions/libephywebextension.so
 %{_mandir}/man1/epiphany.1*
