@@ -1,14 +1,14 @@
-%define		basever		3.8
+%define		basever		3.10
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	5aa6c07fba38a395e5aa94ae7346a9cb
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	009d9ed8ee25885c5539c124f4630072
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -23,8 +23,8 @@ BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.8.0
-BuildRequires:	gtk-webkit3-devel >= 2.0.0
+BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gtk-webkit3-devel >= 2.2.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libnotify-devel >= 0.5.1
@@ -53,7 +53,8 @@ Requires:	dbus >= 1.0.2
 Requires:	glib2 >= 1:2.36.0
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk-webkit3 >= 2.0.0
+Requires:	gtk+3 >= 3.10.0
+Requires:	gtk-webkit3 >= 2.2.0
 Requires:	libsoup >= 2.42.1
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
@@ -118,11 +119,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/epiphany
 %attr(755,root,root) %{_bindir}/ephy-profile-migrator
+%{_datadir}/appdata/epiphany.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %{_datadir}/%{name}
 %{_datadir}/GConf/gsettings/epiphany.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
+%{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
 %{_desktopdir}/epiphany.desktop
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/%{basever}
