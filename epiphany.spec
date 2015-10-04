@@ -78,7 +78,6 @@ Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 
 %build
 %{__gnome_doc_prepare}
-%{__gnome_doc_common}
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
