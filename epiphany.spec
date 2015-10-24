@@ -1,4 +1,4 @@
-%define		basever		3.10
+%define		basever		3.18
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
