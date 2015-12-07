@@ -3,33 +3,32 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.18.0
+Version:	3.18.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	706d1c649c905f6b46a4867c3946e339
+# Source0-md5:	81ebfbd861982c43d62a62efb1fe6246
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-devel >= 3.6.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.36.0
+BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.10.0
-BuildRequires:	gtk-webkit3-devel >= 2.2.2
+BuildRequires:	gtk+3-devel >= 3.14.0
+BuildRequires:	gtk-webkit4-devel >= 2.10.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libsecret-devel >= 0.14
-BuildRequires:	libsoup-devel >= 2.42.1
+BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libwnck-devel
 BuildRequires:	libxml2-devel >= 1:2.6.28
@@ -46,16 +45,17 @@ BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
-Requires:	glib2 >= 1:2.36.0
+Requires:	glib2 >= 1:2.38.0
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.10.0
-Requires:	gtk-webkit3 >= 2.2.2
-Requires:	libsoup >= 2.42.1
+Requires:	gtk+3 >= 3.14.0
+Requires:	gtk-webkit4 >= 2.10.0
+Requires:	libsoup >= 2.48.0
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
 Obsoletes:	epiphany-devel < 3.8.0-2
