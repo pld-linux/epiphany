@@ -1,14 +1,14 @@
-%define		basever		3.20
+%define		basever		3.22
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.20.0
+Version:	3.22.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	c0c40f9805a3a7875abb50dca2bb69e7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	bfb6347acb91163aec3883bb3397372f
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.59
@@ -16,7 +16,7 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gcr-devel >= 3.6.0
+BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gnome-common >= 2.20.0
@@ -24,7 +24,7 @@ BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.20.0
-BuildRequires:	gtk-webkit4-devel >= 2.12.0
+BuildRequires:	gtk-webkit4-devel >= 2.14.2
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	libnotify-devel >= 0.5.1
@@ -55,7 +55,7 @@ Requires:	glib2 >= 1:2.44.0
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.20.0
-Requires:	gtk-webkit4 >= 2.12.0
+Requires:	gtk-webkit4 >= 2.14.2
 Requires:	libsoup >= 2.48.0
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
@@ -125,6 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/GConf/gsettings/epiphany.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.epiphany.host.gschema.xml
 %{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
 %{_desktopdir}/epiphany.desktop
 %attr(755,root,root) %{_libdir}/epiphany-search-provider
