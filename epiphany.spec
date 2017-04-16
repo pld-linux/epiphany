@@ -1,14 +1,14 @@
-%define		basever		3.22
+%define		basever		3.24
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.22.6
+Version:	3.24.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	e08762c6bb01c4d291b3d22c7adb1a65
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	d5471f6f1aaa0818d9bcd9b2c902c458
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.59
@@ -17,16 +17,18 @@ BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-ui-devel >= 3.6.0
-BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.44.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
+BuildRequires:	gettext-tools >= 0.19.8
+BuildRequires:	glib2-devel >= 1:2.46.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.20.0
-BuildRequires:	gtk-webkit4-devel >= 2.14.2
-BuildRequires:	intltool >= 0.50.0
+BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	gtk-webkit4-devel >= 2.16.0
 BuildRequires:	iso-codes >= 0.53
+BuildRequires:	json-glib-devel >= 1.2.0
+BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libsecret-devel >= 0.14
 BuildRequires:	libsoup-devel >= 2.48.0
@@ -49,13 +51,17 @@ BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
+Requires(post,postun):	gtk-update-icon-cache
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
-Requires:	glib2 >= 1:2.44.0
+Requires:	gdk-pixbuf2 >= 2.36.5
+Requires:	glib2 >= 1:2.46.0
 Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.20.0
-Requires:	gtk-webkit4 >= 2.14.2
+Requires:	gtk+3 >= 3.22.0
+Requires:	gtk-webkit4 >= 2.16.0
+Requires:	hicolor-icon-theme
+Requires:	json-glib >= 1.2.0
 Requires:	libsoup >= 2.48.0
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
@@ -78,9 +84,6 @@ Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 %setup -q
 
 %build
-%{__gnome_doc_prepare}
-%{__glib_gettextize}
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoheader}
@@ -99,7 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/%{basever}/web-extensions/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/{,web-extensions/}*.la
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -109,28 +112,31 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %update_desktop_database_post
 %glib_compile_schemas
+%update_icon_cache hicolor
 
 %postun
 %update_desktop_database_postun
 %glib_compile_schemas
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/epiphany
-%attr(755,root,root) %{_bindir}/ephy-profile-migrator
-%{_datadir}/appdata/epiphany.appdata.xml
-%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
+%dir %{_libdir}/epiphany
+%attr(755,root,root) %{_libdir}/epiphany/ephy-profile-migrator
+%attr(755,root,root) %{_libdir}/epiphany/libephymain.so
+%attr(755,root,root) %{_libdir}/epiphany/libephymisc.so
+%dir %{_libdir}/epiphany/web-extensions
+%attr(755,root,root) %{_libdir}/epiphany/web-extensions/libephywebextension.so
+%{_datadir}/appdata/org.gnome.Epiphany.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.EpiphanySearchProvider.service
 %{_datadir}/%{name}
-%{_datadir}/GConf/gsettings/epiphany.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.epiphany.host.gschema.xml
 %{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
-%{_desktopdir}/epiphany.desktop
+%{_desktopdir}/org.gnome.Epiphany.desktop
+%{_iconsdir}/hicolor/*/*/org.gnome.Epiphany*.png
+%{_iconsdir}/hicolor/symbolic/*/org.gnome.Epiphany*.svg
 %attr(755,root,root) %{_libdir}/epiphany-search-provider
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/%{basever}
-%dir %{_libdir}/%{name}/%{basever}/web-extensions
-%attr(755,root,root) %{_libdir}/%{name}/%{basever}/web-extensions/libephywebextension.so
 %{_mandir}/man1/epiphany.1*
