@@ -11,8 +11,6 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.28/%{name}-%{version}
 # Source0-md5:	3e127d843d3f255f426ab34804f29163
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	avahi-devel >= 0.6.22
 BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	docbook-dtd412-xml
@@ -25,7 +23,7 @@ BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22.0
-BuildRequires:	gtk-webkit4-devel >= 2.16.0
+BuildRequires:	gtk-webkit4-devel >= 2.19.5
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.2.0
 BuildRequires:	libicu-devel
@@ -36,6 +34,8 @@ BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libwnck-devel
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	libxslt-devel >= 1.1.20
+BuildRequires:	meson
+BuildRequires:	ninja
 BuildRequires:	nss-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
@@ -84,23 +84,14 @@ Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoheader}
-%{__automake}
-%{__autoconf}
-%configure \
-	--disable-silent-rules \
-	--disable-schemas-compile \
-	--with-distributor-name="PLD Linux"
+%meson build
 
-%{__make}
+%meson_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%meson_install -C build
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/{,web-extensions/}*.la
 
