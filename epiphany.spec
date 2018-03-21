@@ -93,8 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %meson_install -C build
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/{,web-extensions/}*.la
-
 %find_lang %{name} --with-gnome --with-omf
 
 %clean
@@ -112,22 +110,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS README
 %attr(755,root,root) %{_bindir}/epiphany
 %dir %{_libdir}/epiphany
-%attr(755,root,root) %{_libdir}/epiphany/ephy-profile-migrator
 %attr(755,root,root) %{_libdir}/epiphany/libephymain.so
 %attr(755,root,root) %{_libdir}/epiphany/libephymisc.so
+%attr(755,root,root) %{_libdir}/epiphany/libephysync.so
 %dir %{_libdir}/epiphany/web-extensions
 %attr(755,root,root) %{_libdir}/epiphany/web-extensions/libephywebextension.so
-%{_datadir}/appdata/org.gnome.Epiphany.appdata.xml
-%{_datadir}/dbus-1/services/org.gnome.EpiphanySearchProvider.service
+%{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.SearchProvider.service
 %{_datadir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
-%{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
 %{_desktopdir}/org.gnome.Epiphany.desktop
 %{_iconsdir}/hicolor/*/*/org.gnome.Epiphany*.png
 %{_iconsdir}/hicolor/symbolic/*/org.gnome.Epiphany*.svg
-%attr(755,root,root) %{_libdir}/epiphany-search-provider
+%attr(755,root,root) %{_libexecdir}/epiphany-search-provider
+%dir %{_libexecdir}/epiphany
+%attr(755,root,root) %{_libexecdir}/epiphany/ephy-profile-migrator
 %{_mandir}/man1/epiphany.1*
