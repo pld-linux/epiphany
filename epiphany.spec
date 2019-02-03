@@ -3,12 +3,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.28.1
+Version:	3.30.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	681bc22497d2eed463f9116946581a1f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	1b7c072880562c33f52a3347a94bfe6c
 URL:		http://www.gnome.org/projects/epiphany/
 BuildRequires:	appstream-glib-devel
 BuildRequires:	avahi-devel >= 0.6.22
@@ -18,7 +18,6 @@ BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.46.0
-BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gsettings-desktop-schemas-devel
@@ -40,7 +39,7 @@ BuildRequires:	nss-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.601
+BuildRequires:	rpmbuild(macros) >= 1.727
 BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
@@ -86,12 +85,12 @@ Epiphany jest przeglądarką WWW opartą na silniku WebKit.
 %build
 %meson build
 
-%meson_build -C build
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -110,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc NEWS README
+%doc NEWS
 %attr(755,root,root) %{_bindir}/epiphany
 %dir %{_libdir}/epiphany
 %attr(755,root,root) %{_libdir}/epiphany/libephymain.so
