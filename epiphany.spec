@@ -25,6 +25,7 @@ BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	gtk-webkit4-devel >= 2.19.5
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.2.0
+BuildRequires:	libdazzle-devel
 BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libsecret-devel >= 0.14
