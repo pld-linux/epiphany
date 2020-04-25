@@ -2,42 +2,35 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.34.3.1
+Version:	3.36.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.34/%{name}-%{version}.tar.xz
-# Source0-md5:	c8010e7ef1b0fd2da1e613e17445062a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	d66416d0be97ec7789564473337bfe57
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
-BuildRequires:	avahi-devel >= 0.6.22
-BuildRequires:	avahi-gobject-devel >= 0.6.22
 BuildRequires:	cairo-devel >= 1.2
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.61.2
-BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.24.0
-BuildRequires:	gtk-webkit4-devel >= 2.26.0
+BuildRequires:	gtk-webkit4-devel >= 2.27.4
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.2.4
-BuildRequires:	libdazzle-devel >= 3.32
+BuildRequires:	libdazzle-devel >= 3.35.3
 BuildRequires:	libhandy-devel >= 0.0.10
-BuildRequires:	libicu-devel
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libsecret-devel >= 0.14
+BuildRequires:	libsecret-devel >= 0.19.0
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
-BuildRequires:	libwnck-devel
 BuildRequires:	libxml2-devel >= 1:2.6.28
-BuildRequires:	libxslt-devel >= 1.1.20
 BuildRequires:	meson >= 0.46.0
 BuildRequires:	nettle-devel >= 3.4
 BuildRequires:	ninja >= 1.5
-BuildRequires:	nss-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -45,9 +38,6 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel >= 3.0
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	xorg-lib-libICE-devel
-BuildRequires:	xorg-lib-libSM-devel
-BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
@@ -58,17 +48,16 @@ Requires:	dbus >= 1.0.2
 Requires:	gcr-ui >= 3.6.0
 Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.61.2
-Requires:	gnome-icon-theme >= 3.4.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.24.0
-Requires:	gtk-webkit4 >= 2.26.0
+Requires:	gtk-webkit4 >= 2.27.4
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.2.4
-Requires:	libdazzle >= 3.32
+Requires:	libdazzle >= 3.35.3
 Requires:	libhandy >= 0.0.10
 Requires:	libnotify >= 0.5.1
-Requires:	libsecret >= 0.14
+Requires:	libsecret >= 0.19.0
 Requires:	libsoup >= 2.48.0
 Requires:	libxml2 >= 1:2.6.28
 Requires:	nettle >= 3.4
