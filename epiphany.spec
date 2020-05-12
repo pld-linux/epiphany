@@ -3,7 +3,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	3.36.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.36/%{name}-%{version}.tar.xz
@@ -65,8 +65,6 @@ Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
 Obsoletes:	epiphany-devel < 3.8.0-2
 Obsoletes:	epiphany-extensions < 3.8.0
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
