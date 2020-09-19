@@ -2,12 +2,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	3.36.4
+Version:	3.38.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	dba7e0e698948f7896463c512140cb98
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	e5f9e45608ed0af81fa58b1e50a5af4a
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -16,14 +16,16 @@ BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.61.2
+BuildRequires:	gmp-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.24.0
-BuildRequires:	gtk-webkit4-devel >= 2.27.4
+BuildRequires:	gtk-webkit4-devel >= 2.29.3
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.2.4
-BuildRequires:	libdazzle-devel >= 3.35.3
-BuildRequires:	libhandy-devel >= 0.0.10
+BuildRequires:	libdazzle-devel >= 3.37.1
+BuildRequires:	libhandy1-devel >= 0.90.0
 BuildRequires:	libnotify-devel >= 0.5.1
+BuildRequires:	libportal-devel >= 0.0.2
 BuildRequires:	libsecret-devel >= 0.19.0
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
@@ -36,7 +38,7 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sed >= 4.0
-BuildRequires:	sqlite3-devel >= 3.0
+BuildRequires:	sqlite3-devel >= 3.22
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -50,17 +52,19 @@ Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.61.2
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.24.0
-Requires:	gtk-webkit4 >= 2.27.4
+Requires:	gtk-webkit4 >= 2.29.3
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.2.4
-Requires:	libdazzle >= 3.35.3
-Requires:	libhandy >= 0.0.10
+Requires:	libdazzle >= 3.37.1
+Requires:	libhandy1 >= 0.90.0
 Requires:	libnotify >= 0.5.1
+Requires:	libportal >= 0.0.2
 Requires:	libsecret >= 0.19.0
 Requires:	libsoup >= 2.48.0
 Requires:	libxml2 >= 1:2.6.28
 Requires:	nettle >= 3.4
+Requires:	sqlite3 >= 3.22
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
 Obsoletes:	epiphany-devel < 3.8.0-2
