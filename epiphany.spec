@@ -3,7 +3,7 @@ Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
 Version:	40.3
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications/Networking
 Source0:	https://download.gnome.org/sources/epiphany/40/%{name}-%{version}.tar.xz
@@ -46,6 +46,7 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.64.0
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	bubblewrap
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gcr-ui >= 3.6.0
@@ -66,6 +67,7 @@ Requires:	libsoup >= 2.48.0
 Requires:	libxml2 >= 1:2.6.28
 Requires:	nettle >= 3.4
 Requires:	sqlite3 >= 3.22
+Requires:	xdg-dbus-proxy
 Provides:	wwwbrowser
 Obsoletes:	epiphany-apidocs < 3.8.0-2
 Obsoletes:	epiphany-devel < 3.8.0-2
