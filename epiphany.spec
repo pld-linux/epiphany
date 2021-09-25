@@ -1,13 +1,17 @@
+#
+# Conditional build:
+%bcond_with	libsoup3	# use libsoup3/gtk-webkit4.1 for HTTP/2 support
+
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	40.3
-Release:	2
+Version:	41.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/40/%{name}-%{version}.tar.xz
-# Source0-md5:	9b5709c8ff1bb5650d810a0008b9cc85
+Source0:	https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
+# Source0-md5:	addafcf676555bf0fa457a834aeb82cf
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -15,19 +19,22 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.64.0
+BuildRequires:	glib2-devel >= 1:2.67.1
 BuildRequires:	gmp-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.24.0
-BuildRequires:	gtk-webkit4-devel >= 2.31.1
+%{!?with_libsoup3:BuildRequires:	gtk-webkit4-devel >= 2.33.2}
+%{?with_libsoup3:BuildRequires:	gtk-webkit4.1-devel >= 2.33.2}
 BuildRequires:	iso-codes >= 0.53
-BuildRequires:	json-glib-devel >= 1.2.4
+BuildRequires:	json-glib-devel >= 1.6
 BuildRequires:	libarchive-devel
 BuildRequires:	libdazzle-devel >= 3.37.1
 BuildRequires:	libhandy1-devel >= 1.1.0
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libportal-devel >= 0.0.2
 BuildRequires:	libsecret-devel >= 0.19.0
+%{!?with_libsoup3:BuildRequires:	libsoup-devel >= 2.48.0}
+%{?with_libsoup3:BuildRequires:	libsoup3-devel >= 2.99.4}
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
@@ -44,26 +51,28 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.64.0
+Requires(post,postun):	glib2 >= 1:2.67.1
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	bubblewrap
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gcr-ui >= 3.6.0
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.64.0
+Requires:	glib2 >= 1:2.67.1
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.24.0
-Requires:	gtk-webkit4 >= 2.31.1
+%{!?with_libsoup3:Requires:	gtk-webkit4 >= 2.33.2}
+%{?with_libsoup3:Requires:	gtk-webkit4.1 >= 2.33.2}
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
-Requires:	json-glib >= 1.2.4
+Requires:	json-glib >= 1.6
 Requires:	libdazzle >= 3.37.1
 Requires:	libhandy1 >= 1.1.0
 Requires:	libnotify >= 0.5.1
 Requires:	libportal >= 0.0.2
 Requires:	libsecret >= 0.19.0
-Requires:	libsoup >= 2.48.0
+%{!?with_libsoup3:Requires:	libsoup >= 2.48.0}
+%{?with_libsoup3:Requires:	libsoup3 >= 2.99.4}
 Requires:	libxml2 >= 1:2.6.28
 Requires:	nettle >= 3.4
 Requires:	sqlite3 >= 3.22
@@ -89,7 +98,8 @@ opartą na silniku renderującym WebKit.
 %setup -q
 
 %build
-%meson build
+%meson build \
+	%{?with_libsoup3:-Dsoup2=disabled}
 
 %ninja_build -C build
 
