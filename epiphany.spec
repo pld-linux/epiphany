@@ -6,12 +6,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	41.3
+Version:	42.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
-# Source0-md5:	f156959161559985385b33ee3936410f
+Source0:	https://download.gnome.org/sources/epiphany/42/%{name}-%{version}.tar.xz
+# Source0-md5:	0f9577761f67c86b730b360f6807c341
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -19,7 +19,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.67.1
+BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gmp-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.24.0
@@ -29,16 +29,15 @@ BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
 BuildRequires:	libarchive-devel
 BuildRequires:	libdazzle-devel >= 3.37.1
-BuildRequires:	libhandy1-devel >= 1.1.0
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libportal-devel >= 0.0.2
+BuildRequires:	libportal-gtk3-devel >= 0.5
 BuildRequires:	libsecret-devel >= 0.19.0
 %{!?with_libsoup3:BuildRequires:	libsoup-devel >= 2.48.0}
 %{?with_libsoup3:BuildRequires:	libsoup3-devel >= 2.99.4}
-BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
-BuildRequires:	meson >= 0.47.0
+BuildRequires:	meson >= 0.51.0
 BuildRequires:	nettle-devel >= 3.4
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
@@ -51,14 +50,14 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.67.1
+Requires(post,postun):	glib2 >= 1:2.67.4
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	bubblewrap
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gcr-ui >= 3.6.0
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.67.1
+Requires:	glib2 >= 1:2.67.4
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.24.0
 %{!?with_libsoup3:Requires:	gtk-webkit4 >= 2.33.2}
@@ -67,9 +66,9 @@ Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
 Requires:	libdazzle >= 3.37.1
-Requires:	libhandy1 >= 1.1.0
+Requires:	libhandy1 >= 1.5.0
 Requires:	libnotify >= 0.5.1
-Requires:	libportal >= 0.0.2
+Requires:	libportal-gtk3 >= 0.5
 Requires:	libsecret >= 0.19.0
 %{!?with_libsoup3:Requires:	libsoup >= 2.48.0}
 %{?with_libsoup3:Requires:	libsoup3 >= 2.99.4}
