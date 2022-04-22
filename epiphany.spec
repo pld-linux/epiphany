@@ -35,7 +35,6 @@ BuildRequires:	libportal-gtk3-devel >= 0.5
 BuildRequires:	libsecret-devel >= 0.19.0
 %{!?with_libsoup3:BuildRequires:	libsoup-devel >= 2.48.0}
 %{?with_libsoup3:BuildRequires:	libsoup3-devel >= 2.99.4}
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	meson >= 0.51.0
 BuildRequires:	nettle-devel >= 3.4
