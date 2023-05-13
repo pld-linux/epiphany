@@ -1,21 +1,18 @@
-#
-# Conditional build:
-%bcond_with	libsoup3	# use libsoup3/gtk-webkit4.1 for HTTP/2 support
-
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	42.4
-Release:	2
+Version:	43.1
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/42/%{name}-%{version}.tar.xz
-# Source0-md5:	846b96d427571edeabd6da9d5d7fa17c
+Source0:	https://download.gnome.org/sources/epiphany/43/%{name}-%{version}.tar.xz
+# Source0-md5:	b372b3a60975f0284abbb48a3d5ff0e3
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gcc >= 6:4.7
 BuildRequires:	gcr-ui-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
@@ -23,20 +20,18 @@ BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gmp-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.24.0
-%{!?with_libsoup3:BuildRequires:	gtk-webkit4-devel >= 2.33.2}
-%{?with_libsoup3:BuildRequires:	gtk-webkit4.1-devel >= 2.33.2}
+BuildRequires:	gtk-webkit4.1-devel >= 2.37.1
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
 BuildRequires:	libarchive-devel
 BuildRequires:	libdazzle-devel >= 3.37.1
 BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libportal-gtk3-devel >= 0.5
+BuildRequires:	libportal-gtk3-devel >= 0.6
 BuildRequires:	libsecret-devel >= 0.19.0
-%{!?with_libsoup3:BuildRequires:	libsoup-devel >= 2.48.0}
-%{?with_libsoup3:BuildRequires:	libsoup3-devel >= 2.99.4}
+BuildRequires:	libsoup3-devel >= 2.99.4
 BuildRequires:	libxml2-devel >= 1:2.6.28
-BuildRequires:	meson >= 0.51.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	nettle-devel >= 3.4
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
@@ -59,18 +54,16 @@ Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.67.4
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.24.0
-%{!?with_libsoup3:Requires:	gtk-webkit4 >= 2.33.2}
-%{?with_libsoup3:Requires:	gtk-webkit4.1 >= 2.33.2}
+Requires:	gtk-webkit4.1 >= 2.37.1
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
 Requires:	libdazzle >= 3.37.1
 Requires:	libhandy1 >= 1.5.0
 Requires:	libnotify >= 0.5.1
-Requires:	libportal-gtk3 >= 0.5
+Requires:	libportal-gtk3 >= 0.6
 Requires:	libsecret >= 0.19.0
-%{!?with_libsoup3:Requires:	libsoup >= 2.48.0}
-%{?with_libsoup3:Requires:	libsoup3 >= 2.99.4}
+Requires:	libsoup3 >= 2.99.4
 Requires:	libxml2 >= 1:2.6.28
 Requires:	nettle >= 3.4
 Requires:	sqlite3 >= 3.22
@@ -96,8 +89,7 @@ opartą na silniku renderującym WebKit.
 %setup -q
 
 %build
-%meson build \
-	%{?with_libsoup3:-Dsoup2=disabled}
+%meson build
 
 %ninja_build -C build
 
@@ -130,13 +122,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/epiphany/libephymisc.so
 %attr(755,root,root) %{_libdir}/epiphany/libephysync.so
 %dir %{_libdir}/epiphany/web-process-extensions
+%attr(755,root,root) %{_libdir}/epiphany/web-process-extensions/libephywebextension.so
 %attr(755,root,root) %{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
 %attr(755,root,root) %{_libexecdir}/epiphany-search-provider
+%attr(755,root,root) %{_libexecdir}/epiphany-webapp-provider
 %if "%{_libexecdir}" != "%{_libdir}"
 %dir %{_libexecdir}/epiphany
 %endif
 %attr(755,root,root) %{_libexecdir}/epiphany/ephy-profile-migrator
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.SearchProvider.service
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.WebAppProvider.service
 %{_datadir}/epiphany
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
