@@ -1,33 +1,39 @@
+# TODO: use gtk4-update-icon-cache
+#
+# Conditional build:
+%bcond_with	granite		# elementaryOS integration
+
 Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	43.1
-Release:	2
+Version:	44.5
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/43/%{name}-%{version}.tar.xz
-# Source0-md5:	b372b3a60975f0284abbb48a3d5ff0e3
+Source0:	https://download.gnome.org/sources/epiphany/44/%{name}-%{version}.tar.xz
+# Source0-md5:	c2de03e09d3f80dc9b1c4019e79ee668
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gcc >= 6:4.7
-BuildRequires:	gcr-ui-devel >= 3.6.0
+BuildRequires:	gcr4-devel >= 3.9.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.67.4
+BuildRequires:	gstreamer-devel >= 1.0
+BuildRequires:	glib2-devel >= 1:2.70.0
 BuildRequires:	gmp-devel
+%{?with_granite:BuildRequires:	granite7-devel >= 7.2.0}
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.24.0
-BuildRequires:	gtk-webkit4.1-devel >= 2.37.1
+BuildRequires:	gtk4-devel >= 4.9.3
+BuildRequires:	gtk-webkit6-devel >= 2.40
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
+BuildRequires:	libadwaita-devel >= 1.3
 BuildRequires:	libarchive-devel
-BuildRequires:	libdazzle-devel >= 3.37.1
-BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libnotify-devel >= 0.5.1
-BuildRequires:	libportal-gtk3-devel >= 0.6
+BuildRequires:	libportal-gtk4-devel >= 0.6
 BuildRequires:	libsecret-devel >= 0.19.0
 BuildRequires:	libsoup3-devel >= 2.99.4
 BuildRequires:	libxml2-devel >= 1:2.6.28
@@ -44,24 +50,23 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.67.4
+Requires(post,postun):	glib2 >= 1:2.70.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	bubblewrap
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
-Requires:	gcr-ui >= 3.6.0
+Requires:	gcr4 >= 3.9.0
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.67.4
+Requires:	glib2 >= 1:2.70.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.24.0
-Requires:	gtk-webkit4.1 >= 2.37.1
+Requires:	gtk4 >= 4.9.3
+Requires:	gtk-webkit6 >= 2.40
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
-Requires:	libdazzle >= 3.37.1
-Requires:	libhandy1 >= 1.5.0
+Requires:	libadwaita >= 1.3
 Requires:	libnotify >= 0.5.1
-Requires:	libportal-gtk3 >= 0.6
+Requires:	libportal-gtk4 >= 0.6
 Requires:	libsecret >= 0.19.0
 Requires:	libsoup3 >= 2.99.4
 Requires:	libxml2 >= 1:2.6.28
@@ -89,7 +94,8 @@ opartą na silniku renderującym WebKit.
 %setup -q
 
 %build
-%meson build
+%meson build \
+	%{?with_granite:-Dgranite=enabled}
 
 %ninja_build -C build
 
