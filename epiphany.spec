@@ -7,12 +7,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	44.7
+Version:	45.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/44/%{name}-%{version}.tar.xz
-# Source0-md5:	9a3633de1a635a5b74cd9e8a1514f248
+Source0:	https://download.gnome.org/sources/epiphany/45/%{name}-%{version}.tar.xz
+# Source0-md5:	b73b59a9f20c541f455f93f7fbef4762
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -22,15 +22,15 @@ BuildRequires:	gcr4-devel >= 3.9.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	glib2-devel >= 1:2.70.0
+BuildRequires:	glib2-devel >= 1:2.74.0
 BuildRequires:	gmp-devel
 %{?with_granite:BuildRequires:	granite7-devel >= 7.2.0}
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.9.3
-BuildRequires:	gtk-webkit6-devel >= 2.40
+BuildRequires:	gtk4-devel >= 4.10.0
+BuildRequires:	gtk-webkit6-devel >= 2.41.1
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
-BuildRequires:	libadwaita-devel >= 1.3
+BuildRequires:	libadwaita-devel >= 1.4
 BuildRequires:	libarchive-devel
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libportal-gtk4-devel >= 0.6
@@ -50,21 +50,21 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.70.0
+Requires(post,postun):	glib2 >= 1:2.74.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	bubblewrap
 Requires:	ca-certificates
 Requires:	dbus >= 1.0.2
 Requires:	gcr4 >= 3.9.0
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.70.0
+Requires:	glib2 >= 1:2.74.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.9.3
-Requires:	gtk-webkit6 >= 2.40
+Requires:	gtk4 >= 4.10.0
+Requires:	gtk-webkit6 >= 2.41.1
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
-Requires:	libadwaita >= 1.3
+Requires:	libadwaita >= 1.4
 Requires:	libnotify >= 0.5.1
 Requires:	libportal-gtk4 >= 0.6
 Requires:	libsecret >= 0.19.0
