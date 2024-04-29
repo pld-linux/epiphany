@@ -7,12 +7,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	45.3
+Version:	46.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/45/%{name}-%{version}.tar.xz
-# Source0-md5:	51bf2dd242239a53f309c744ea16804e
+Source0:	https://download.gnome.org/sources/epiphany/46/%{name}-%{version}.tar.xz
+# Source0-md5:	c284bbbad1c08e218c6aae0068906b6f
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -26,8 +26,8 @@ BuildRequires:	glib2-devel >= 1:2.74.0
 BuildRequires:	gmp-devel
 %{?with_granite:BuildRequires:	granite7-devel >= 7.2.0}
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.10.0
-BuildRequires:	gtk-webkit6-devel >= 2.41.1
+BuildRequires:	gtk4-devel >= 4.12.0
+BuildRequires:	gtk-webkit6-devel >= 2.43.4
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
 BuildRequires:	libadwaita-devel >= 1.4
@@ -59,8 +59,8 @@ Requires:	gcr4 >= 3.9.0
 Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.74.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.10.0
-Requires:	gtk-webkit6 >= 2.41.1
+Requires:	gtk4 >= 4.12.0
+Requires:	gtk-webkit6 >= 2.43.4
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
