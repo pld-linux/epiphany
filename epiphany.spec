@@ -7,12 +7,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	46.3
+Version:	47.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/epiphany/46/%{name}-%{version}.tar.xz
-# Source0-md5:	4ecc0fa4dc5dff48c22e1e71b684faaf
+Source0:	https://download.gnome.org/sources/epiphany/47/%{name}-%{version}.tar.xz
+# Source0-md5:	d92ce89fdb3d255b28c29f26be8d1d23
 URL:		https://wiki.gnome.org/Apps/Web
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -26,11 +26,11 @@ BuildRequires:	glib2-devel >= 1:2.74.0
 BuildRequires:	gmp-devel
 %{?with_granite:BuildRequires:	granite7-devel >= 7.2.0}
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.12.0
+BuildRequires:	gtk4-devel >= 4.13.3
 BuildRequires:	gtk-webkit6-devel >= 2.43.4
 BuildRequires:	iso-codes >= 0.53
 BuildRequires:	json-glib-devel >= 1.6
-BuildRequires:	libadwaita-devel >= 1.4
+BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	libarchive-devel
 BuildRequires:	libnotify-devel >= 0.5.1
 BuildRequires:	libportal-gtk4-devel >= 0.6
@@ -59,12 +59,12 @@ Requires:	gcr4 >= 3.9.0
 Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.74.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.12.0
+Requires:	gtk4 >= 4.13.3
 Requires:	gtk-webkit6 >= 2.43.4
 Requires:	hicolor-icon-theme
 Requires:	iso-codes >= 0.53
 Requires:	json-glib >= 1.6
-Requires:	libadwaita >= 1.4
+Requires:	libadwaita >= 1.6
 Requires:	libnotify >= 0.5.1
 Requires:	libportal-gtk4 >= 0.6
 Requires:	libsecret >= 0.19.0
@@ -127,11 +127,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README.md TODO
 %attr(755,root,root) %{_bindir}/epiphany
 %dir %{_libdir}/epiphany
+%attr(755,root,root) %{_libdir}/epiphany/libephyautofill.so
 %attr(755,root,root) %{_libdir}/epiphany/libephymain.so
 %attr(755,root,root) %{_libdir}/epiphany/libephymisc.so
 %attr(755,root,root) %{_libdir}/epiphany/libephysync.so
 %dir %{_libdir}/epiphany/web-process-extensions
-%attr(755,root,root) %{_libdir}/epiphany/web-process-extensions/libephywebextension.so
 %attr(755,root,root) %{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
 %attr(755,root,root) %{_libexecdir}/epiphany-search-provider
 %attr(755,root,root) %{_libexecdir}/epiphany-webapp-provider
