@@ -13,7 +13,7 @@ License:	GPL v3+
 Group:		X11/Applications/Networking
 Source0:	https://download.gnome.org/sources/epiphany/47/%{name}-%{version}.tar.xz
 # Source0-md5:	d92ce89fdb3d255b28c29f26be8d1d23
-URL:		https://wiki.gnome.org/Apps/Web
+URL:		https://apps.gnome.org/Epiphany/
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
 BuildRequires:	docbook-dtd412-xml
