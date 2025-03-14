@@ -7,12 +7,12 @@ Summary:	Epiphany - WebKit-based GNOME web browser
 Summary(es.UTF-8):	Epiphany - navigador Web de GNOME basado en WebKit
 Summary(pl.UTF-8):	Epiphany - przeglądarka WWW dla GNOME
 Name:		epiphany
-Version:	47.3.1
+Version:	47.4
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
 Source0:	https://download.gnome.org/sources/epiphany/47/%{name}-%{version}.tar.xz
-# Source0-md5:	ba8e94876c62e3c17cad15a7e025d643
+# Source0-md5:	38bea12c0c080133459d77911dc2cb5d
 URL:		https://apps.gnome.org/Epiphany/
 BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.2
@@ -43,7 +43,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel >= 3.22
 BuildRequires:	tar >= 1:1.22
@@ -94,15 +94,15 @@ opartą na silniku renderującym WebKit.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	%{?with_granite:-Dgranite=enabled}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
